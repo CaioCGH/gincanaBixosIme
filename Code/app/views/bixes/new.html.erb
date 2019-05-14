@@ -1,0 +1,30 @@
+
+<%= form_with scope: :bixe, url: bixes_path, local: true do |form| %>
+    <p>
+      <%= form.label :Nome %><br>
+      <%= form.text_field :name %>
+    </p>
+   
+    <p>
+      <%= form.label :Telefone %><br>
+      <%= form.text_field :telephone %>
+    </p>
+    <p>
+      <%= form.label :Curso %><br>
+      <%= form.text_field :course %>
+    </p>
+    <p>
+      <%= form.label :Tutor %><br>
+      <%= form.text_field :tutor %>
+    </p>
+
+    # Isso poderia ser uma lista de checkboxes. Depois construir o array no controller
+    <p>
+      <%= form.label :Modalidades %><br>
+      <%= form.text_field :sports %>
+    </p>
+   
+    <p>
+      <%= form.submit %>
+    </p>
+  <% end %>
