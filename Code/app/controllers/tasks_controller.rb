@@ -12,9 +12,6 @@ class TasksController < ApplicationController
     def create
         print params
         @task = Task.new(params.require(:task).permit(:name, :description, :scoring_type, :task_type, :sendable))
-        # render :text => @task.inspect
-        puts "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
-        puts @task.task_type
         @task.save
         redirect_to @task
     end
