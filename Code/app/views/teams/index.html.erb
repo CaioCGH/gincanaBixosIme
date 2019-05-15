@@ -1,0 +1,18 @@
+<h1>Tabela de todos os times</h1>
+ 
+<table>
+  <tr>
+    <th>nome</th>
+    <th>pontuação</th>
+    <th>colocação</th>
+  </tr>
+ 
+  <% @teams.each do |team| %>
+    <tr>
+      <td><%= team.name %></td>
+      <td><%= team.score %></td>
+      <td><%= team.placement %></td>
+      <td><%= link_to 'Show', teams_path(team) %></td>
+    </tr>
+  <% end %>
+</table>

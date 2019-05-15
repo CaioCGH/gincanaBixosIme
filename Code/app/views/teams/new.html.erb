@@ -1,0 +1,10 @@
+<%= form_with scope: :team, url: teams_path, local: true do |form| %>
+    <p>
+      <%= form.label :Nome %><br>
+      <%= form.text_field :name %>
+    </p>
+    
+    <p>
+      <%= form.submit %>
+    </p>
+  <% end %>

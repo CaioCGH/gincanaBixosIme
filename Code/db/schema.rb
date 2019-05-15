@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_05_15_005142) do
+ActiveRecord::Schema.define(version: 2019_05_15_013452) do
 
   create_table "bixes", force: :cascade do |t|
     t.string "name"
@@ -28,6 +28,14 @@ ActiveRecord::Schema.define(version: 2019_05_15_005142) do
     t.string "scoring_type"
     t.string "task_type"
     t.boolean "sendable"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "teams", force: :cascade do |t|
+    t.string "name"
+    t.decimal "score"
+    t.decimal "placement"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
