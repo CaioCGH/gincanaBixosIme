@@ -10,7 +10,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_05_15_022057) do
+ActiveRecord::Schema.define(version: 2019_05_15_053434) do
+
+  create_table "bixe_has_users", force: :cascade do |t|
+    t.integer "bixe_id"
+    t.integer "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["bixe_id", "user_id"], name: "index_bixe_has_users_on_bixe_id_and_user_id", unique: true
+    t.index ["bixe_id"], name: "index_bixe_has_users_on_bixe_id"
+    t.index ["user_id"], name: "index_bixe_has_users_on_user_id"
+  end
 
   create_table "bixes", force: :cascade do |t|
     t.string "name"
@@ -20,6 +30,16 @@ ActiveRecord::Schema.define(version: 2019_05_15_022057) do
     t.string "sports"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "profile_has_services", force: :cascade do |t|
+    t.integer "profile_id"
+    t.integer "service_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["profile_id", "service_id"], name: "index_profile_has_services_on_profile_id_and_service_id", unique: true
+    t.index ["profile_id"], name: "index_profile_has_services_on_profile_id"
+    t.index ["service_id"], name: "index_profile_has_services_on_service_id"
   end
 
   create_table "profiles", force: :cascade do |t|
@@ -51,6 +71,16 @@ ActiveRecord::Schema.define(version: 2019_05_15_022057) do
     t.decimal "placement"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "user_has_profiles", force: :cascade do |t|
+    t.integer "user_id"
+    t.integer "profile_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["profile_id"], name: "index_user_has_profiles_on_profile_id"
+    t.index ["user_id", "profile_id"], name: "index_user_has_profiles_on_user_id_and_profile_id", unique: true
+    t.index ["user_id"], name: "index_user_has_profiles_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|

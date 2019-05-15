@@ -1,5 +1,18 @@
+<h1>Cadastro de Bixe!</h1>
 
 <%= form_with scope: :bixe, url: bixes_path, local: true do |form| %>
+    <p>Primeiro entre com os dados da sua conta:</p>
+    <p>
+      <%= form.label :email %><br>
+      <%= form.text_field :email %>
+    </p>
+   
+    <p>
+      <%= form.label :Senha %><br>
+      <%= form.text_field :password %>
+    </p>
+
+    <p>Agora, alguns dados pessoais:</p>
     <p>
       <%= form.label :Nome %><br>
       <%= form.text_field :name %>
@@ -21,7 +34,7 @@
     # Isso poderia ser uma lista de checkboxes. Depois construir o array no controller
     <p>
       <%= form.label :Modalidades %><br>
-      <%= form.text_field :sports %>
+      <%= form.text_area :sports %>
     </p>
    
     <p>

@@ -15,3 +15,8 @@ servico1 = Service.new(name: "Serviço1", description: "Este é um serviço bás
 servico1.save!
 servico2 = Service.new(name: "Serviço2", description: "Este é um serviço avançado, acessível para admins")
 servico2.save!
+
+phs1 = ProfileHasService.new(profile_id: perfil1.id, service_id: servico1.id)
+phs1.save!
+phs2 = ProfileHasService.new(profile_id: perfil2.id, service_id: servico2.id)
+phs2.save!

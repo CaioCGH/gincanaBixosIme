@@ -1,6 +1,9 @@
 Rails.application.routes.draw do
   root 'pages#home'
   
+  get 'admin', to:'pages#admin'
+
+
   resources :users
   resources :bixes
   resources :tasks
