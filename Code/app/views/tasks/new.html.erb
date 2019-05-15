@@ -1,0 +1,30 @@
+<%= form_with scope: :task, url: tasks_path, local: true do |form| %>
+    <p>
+      <%= form.label :Nome %><br>
+      <%= form.text_field :name %>
+    </p>
+   
+    <p>
+      <%= form.label :Descrição%><br>
+      <%= form.text_field :description %>
+    </p>
+
+    <p>
+      <%= form.label :"Forma de pontuação:"%><br>
+      <%= form.text_field :scoring_type %>
+    </p>
+
+    <p>
+      <%= form.label :Tipo%><br>
+      <%= form.text_field :task_type %>
+    </p>
+    
+    <p>
+      <%= form.label :Enviável%><br>
+      <%= form.text_field :sendable %>
+    </p>
+   
+    <p>
+      <%= form.submit %>
+    </p>
+  <% end %>
