@@ -4,8 +4,9 @@ class CreateBixes < ActiveRecord::Migration[5.2]
       t.string :name
       t.string :telephone
       t.string :course
-      t.string :tutor
+      t.boolean :tutor
       t.string :sports
+      t.boolean :is_valid
 
       t.timestamps
     end

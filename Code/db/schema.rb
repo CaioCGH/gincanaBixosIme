@@ -26,8 +26,9 @@ ActiveRecord::Schema.define(version: 2019_05_15_053434) do
     t.string "name"
     t.string "telephone"
     t.string "course"
-    t.string "tutor"
+    t.boolean "tutor"
     t.string "sports"
+    t.boolean "is_valid"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

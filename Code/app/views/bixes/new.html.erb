@@ -6,7 +6,7 @@
       <%= form.label :email %><br>
       <%= form.text_field :email %>
     </p>
-   
+
     <p>
       <%= form.label :Senha %><br>
       <%= form.text_field :password %>
@@ -17,7 +17,7 @@
       <%= form.label :Nome %><br>
       <%= form.text_field :name %>
     </p>
-   
+
     <p>
       <%= form.label :Telefone %><br>
       <%= form.text_field :telephone %>
@@ -28,7 +28,7 @@
     </p>
     <p>
       <%= form.label :Tutor %><br>
-      <%= form.text_field :tutor %>
+      <%= form.check_box :tutor %>
     </p>
 
     # Isso poderia ser uma lista de checkboxes. Depois construir o array no controller
@@ -36,7 +36,7 @@
       <%= form.label :Modalidades %><br>
       <%= form.text_area :sports %>
     </p>
-   
+
     <p>
       <%= form.submit %>
     </p>

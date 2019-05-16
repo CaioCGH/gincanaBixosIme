@@ -1,0 +1,19 @@
+<h1>Bixes Cadastrados</h1>
+<table>
+
+  <thead>
+    <tr>
+      <th>Nome</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @bixe.each do |b| %>
+      <tr>
+        <td><%=b.name%></td>
+        <td><%= link_to 'Apagar', bix_path(b), method: :delete, data: {confirm: 'Certeza?'} %></td>
+      </tr>
+    <% end %>
+  </tbody>
+
+</table>
