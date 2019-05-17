@@ -1,11 +1,33 @@
 <h1>Gincana dos Bixos do Ime</h1>
 
     <p>Bem vinde!</p>
+<br>
+<p>Tarefas!</p>
 
-<p> Painel de Controle </p>
-<%= link_to 'Bixes', bixes_path%><br>
-<%= link_to 'Profiles', profiles_path%><br>
-<%= link_to 'Serviço', services_path%><br>
-<%= link_to 'Esporte', sports_path%><br>
-<%= link_to 'Tarefa', tasks_path%><br>
-<%= link_to 'Time', teams_path%><br>
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Description</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @tasks.each do |task| %>
+      <tr>
+        <td><%= link_to task.name, task %></td>
+        <td><%= task.description %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<% if @user.admin == true %>
+  <p> Painel de Controle </p>
+  <%= link_to 'Bixes', bixes_path%><br>
+  <%= link_to 'Profiles', profiles_path%><br>
+  <%= link_to 'Serviço', services_path%><br>
+  <%= link_to 'Esporte', sports_path%><br>
+  <%= link_to 'Tarefa', tasks_path%><br>
+  <%= link_to 'Time', teams_path%><br>
+<% end %>
