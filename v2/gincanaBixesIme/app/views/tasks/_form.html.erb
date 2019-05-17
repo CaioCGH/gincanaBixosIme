@@ -1,0 +1,57 @@
+<%= form_with(model: task, local: true) do |form| %>
+  <% if task.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(task.errors.count, "error") %> prohibited this task from being saved:</h2>
+
+      <ul>
+      <% task.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :name %>
+    <%= form.text_field :name %>
+  </div>
+
+  <div class="field">
+    <%= form.label :description %>
+    <%= form.text_field :description %>
+  </div>
+
+  <div class="field">
+    <%= form.label :score_type %>
+    <%= form.text_field :score_type %>
+  </div>
+
+  <div class="field">
+    <%= form.label :have_score %>
+    <%= form.check_box :have_score %>
+  </div>
+
+  <div class="field">
+    <%= form.label :group %>
+    <%= form.check_box :group %>
+  </div>
+
+  <div class="field">
+    <%= form.label :send %>
+    <%= form.check_box :send %>
+  </div>
+
+  <div class="field">
+    <%= form.label :max_send %>
+    <%= form.number_field :max_send %>
+  </div>
+
+  <div class="field">
+    <%= form.label :have_feedback %>
+    <%= form.check_box :have_feedback %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

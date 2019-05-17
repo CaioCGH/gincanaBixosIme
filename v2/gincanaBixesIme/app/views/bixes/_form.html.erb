@@ -1,0 +1,42 @@
+<%= form_with(model: bix, local: true) do |form| %>
+  <% if bix.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(bix.errors.count, "error") %> prohibited this bix from being saved:</h2>
+
+      <ul>
+      <% bix.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :name %>
+    <%= form.text_field :name %>
+  </div>
+
+  <div class="field">
+    <%= form.label :telephone %>
+    <%= form.text_field :telephone %>
+  </div>
+
+  <div class="field">
+    <%= form.label :course %>
+    <%= form.text_field :course %>
+  </div>
+
+  <div class="field">
+    <%= form.label :tutor %>
+    <%= form.check_box :tutor %>
+  </div>
+
+  <div class="field">
+    <%= form.label :is_valid %>
+    <%= form.check_box :is_valid %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

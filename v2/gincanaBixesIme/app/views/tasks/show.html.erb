@@ -1,0 +1,44 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @task.name %>
+</p>
+
+<p>
+  <strong>Description:</strong>
+  <%= @task.description %>
+</p>
+
+<p>
+  <strong>Score type:</strong>
+  <%= @task.score_type %>
+</p>
+
+<p>
+  <strong>Have score:</strong>
+  <%= @task.have_score %>
+</p>
+
+<p>
+  <strong>Group:</strong>
+  <%= @task.group %>
+</p>
+
+<p>
+  <strong>Send:</strong>
+  <%= @task.send %>
+</p>
+
+<p>
+  <strong>Max send:</strong>
+  <%= @task.max_send %>
+</p>
+
+<p>
+  <strong>Have feedback:</strong>
+  <%= @task.have_feedback %>
+</p>
+
+<%= link_to 'Edit', edit_task_path(@task) %> |
+<%= link_to 'Back', tasks_path %>

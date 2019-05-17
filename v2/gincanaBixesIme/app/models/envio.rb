@@ -1,0 +1,2 @@
+class Envio < ApplicationRecord
+end

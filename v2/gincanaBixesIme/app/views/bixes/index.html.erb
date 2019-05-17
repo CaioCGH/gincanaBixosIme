@@ -1,0 +1,35 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Bixes</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Telephone</th>
+      <th>Course</th>
+      <th>Tutor</th>
+      <th>Is valid</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @bixes.each do |bix| %>
+      <tr>
+        <td><%= bix.name %></td>
+        <td><%= bix.telephone %></td>
+        <td><%= bix.course %></td>
+        <td><%= bix.tutor %></td>
+        <td><%= bix.is_valid %></td>
+        <td><%= link_to 'Show', bix %></td>
+        <td><%= link_to 'Edit', edit_bix_path(bix) %></td>
+        <td><%= link_to 'Destroy', bix, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Bix', new_bix_path %>

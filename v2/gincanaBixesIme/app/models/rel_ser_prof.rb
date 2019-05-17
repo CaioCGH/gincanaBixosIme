@@ -1,0 +1,2 @@
+class RelSerProf < ApplicationRecord
+end

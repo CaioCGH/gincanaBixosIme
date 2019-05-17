@@ -1,0 +1,2 @@
+class RelUserBixe < ApplicationRecord
+end

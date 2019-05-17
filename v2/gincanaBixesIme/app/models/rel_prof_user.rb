@@ -1,0 +1,2 @@
+class RelProfUser < ApplicationRecord
+end

@@ -1,0 +1,2 @@
+class RelBixeSport < ApplicationRecord
+end

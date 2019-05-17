@@ -1,0 +1,41 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Tasks</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Description</th>
+      <th>Score type</th>
+      <th>Have score</th>
+      <th>Group</th>
+      <th>Send</th>
+      <th>Max send</th>
+      <th>Have feedback</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @tasks.each do |task| %>
+      <tr>
+        <td><%= task.name %></td>
+        <td><%= task.description %></td>
+        <td><%= task.score_type %></td>
+        <td><%= task.have_score %></td>
+        <td><%= task.group %></td>
+        <td><%= task.send %></td>
+        <td><%= task.max_send %></td>
+        <td><%= task.have_feedback %></td>
+        <td><%= link_to 'Show', task %></td>
+        <td><%= link_to 'Edit', edit_task_path(task) %></td>
+        <td><%= link_to 'Destroy', task, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Task', new_task_path %>

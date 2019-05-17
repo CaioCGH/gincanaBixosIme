@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyString
+  telephone: MyString
+  course: MyString
+  tutor: false
+  is_valid: false
+
+two:
+  name: MyString
+  telephone: MyString
+  course: MyString
+  tutor: false
+  is_valid: false
