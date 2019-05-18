@@ -25,5 +25,12 @@
   <%= @bix.is_valid %>
 </p>
 
+<p>
+  <strong>Team:</strong>
+  <% if  @bix.team_id != nil %>
+    <%= Team.find(@bix.team_id).name %>
+  <%end%>
+</p>
+
 <%= link_to 'Edit', edit_bix_path(@bix) %> |
-<%= link_to 'Back', bixes_path %>
+<%= link_to 'Back', root_path %>

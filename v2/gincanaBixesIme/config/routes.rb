@@ -1,8 +1,8 @@
 Rails.application.routes.draw do
+  resources :teams
   devise_for :users
   root 'home#home'
 
-  resources :teams
   resources :tasks
   resources :sports
   resources :services
