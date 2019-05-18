@@ -1,2 +1,0 @@
-class ProfileHasService < ApplicationRecord
-end

@@ -1,2 +1,0 @@
-class Bixe < ApplicationRecord
-end
