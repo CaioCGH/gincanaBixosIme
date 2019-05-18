@@ -40,5 +40,8 @@
   <%= @task.have_feedback %>
 </p>
 
-<%= link_to 'Edit', edit_task_path(@task) %> |
-<%= link_to 'Back', tasks_path %>
+<% if current_user.admin == true %>
+  <%= link_to 'Edit', edit_task_path(@task) %>
+<% end %>
+
+<%= link_to 'Back', root_path %>

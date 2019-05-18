@@ -2,13 +2,13 @@
 
     <p>Bem vinde!</p>
 <br>
-<p>Tarefas!</p>
 
+<p>Tarefas!</p>
 <table>
   <thead>
     <tr>
-      <th>Name</th>
-      <th>Description</th>
+      <th>Nome</th>
+      <th>Descrição</th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -17,6 +17,25 @@
       <tr>
         <td><%= link_to task.name, task %></td>
         <td><%= task.description %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<p>Times</p>
+<table>
+  <thead>
+    <tr>
+      <th>Nome</th>
+      <th>Pontos</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @teams.each do |team| %>
+      <tr>
+        <td><%= team.name %></td>
+        <td><%= team.score %></td>
       </tr>
     <% end %>
   </tbody>

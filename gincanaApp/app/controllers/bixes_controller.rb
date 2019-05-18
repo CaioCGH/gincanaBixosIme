@@ -25,16 +25,20 @@ class BixesController < ApplicationController
   # POST /bixes.json
   def create
     @bix = Bixe.new(bix_params)
+    @bix.is_valid = false
 
     respond_to do |format|
       if @bix.save
-        format.html { redirect_to @bix, notice: 'Bixe was successfully created.' }
+        format.html { redirect_to root_path, notice: 'Bixe was successfully created.' }
         format.json { render :show, status: :created, location: @bix }
       else
         format.html { render :new }
         format.json { render json: @bix.errors, status: :unprocessable_entity }
       end
     end
+
+    @relub = RelUserBixe.new(user_id: current_user.id, bixe_id: @bix.id)
+    @relub.save!
   end
 
   # PATCH/PUT /bixes/1
@@ -69,6 +73,6 @@ class BixesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def bix_params
-      params.require(:bixe).permit(:name, :telephone, :course, :tutor, :is_valid)
+      params.require(:bixe).permit(:name, :telephone, :course, :tutor, :is_valid, :team_id)
     end
 end

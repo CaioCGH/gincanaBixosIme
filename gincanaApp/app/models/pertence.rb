@@ -1,2 +1,0 @@
-class Pertence < ApplicationRecord
-end

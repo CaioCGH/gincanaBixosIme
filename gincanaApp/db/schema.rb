@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_05_16_223957) do
+ActiveRecord::Schema.define(version: 2019_05_18_001041) do
 
   create_table "bixes", force: :cascade do |t|
     t.string "name"
@@ -20,6 +20,8 @@ ActiveRecord::Schema.define(version: 2019_05_16_223957) do
     t.boolean "is_valid"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "team_id"
+    t.index ["team_id"], name: "index_bixes_on_team_id"
   end
 
   create_table "envios", force: :cascade do |t|
@@ -30,16 +32,6 @@ ActiveRecord::Schema.define(version: 2019_05_16_223957) do
     t.index ["bixe_id", "task_id"], name: "index_envios_on_bixe_id_and_task_id", unique: true
     t.index ["bixe_id"], name: "index_envios_on_bixe_id"
     t.index ["task_id"], name: "index_envios_on_task_id"
-  end
-
-  create_table "pertences", force: :cascade do |t|
-    t.integer "team_id"
-    t.integer "bixe_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["bixe_id"], name: "index_pertences_on_bixe_id"
-    t.index ["team_id", "bixe_id"], name: "index_pertences_on_team_id_and_bixe_id", unique: true
-    t.index ["team_id"], name: "index_pertences_on_team_id"
   end
 
   create_table "profiles", force: :cascade do |t|
