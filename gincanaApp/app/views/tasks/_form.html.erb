@@ -1,57 +1,93 @@
-<%= form_with(model: task, local: true) do |form| %>
-  <% if task.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(task.errors.count, "error") %> prohibited this task from being saved:</h2>
+<% if current_user.admin == true %>
+  <%= current_user.to_json %>
+  <%= form_with(model: task, local: true) do |form| %>
+    <% if task.errors.any? %>
+      <div id="error_explanation">
+        <h2><%= pluralize(task.errors.count, "error") %> prohibited this task from being saved:</h2>
 
-      <ul>
-      <% task.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
+        <ul>
+        <% task.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+        </ul>
+      </div>
+    <% end %>
+
+    <div class="field">
+      <%= form.label :name %>
+      <%= form.text_field :name %>
+    </div>
+
+    <div class="field">
+      <%= form.label :description %>
+      <%= form.text_field :description %>
+    </div>
+
+    <div class="field">
+      <%= form.label :score_type %>
+      <%= form.text_field :score_type %>
+    </div>
+
+    <div class="field">
+      <%= form.label :have_score %>
+      <%= form.check_box :have_score %>
+    </div>
+
+    <div class="field">
+      <%= form.label :group %>
+      <%= form.check_box :group %>
+    </div>
+
+    <div class="field">
+      <%= form.label :send %>
+      <%= form.check_box :send %>
+    </div>
+
+    <div class="field">
+      <%= form.label :max_send %>
+      <%= form.number_field :max_send %>
+    </div>
+
+    <div class="field">
+      <%= form.label :have_feedback %>
+      <%= form.check_box :have_feedback %>
+    </div>
+
+    <div class="actions">
+      <%= form.submit %>
     </div>
   <% end %>
+<% end %>
 
-  <div class="field">
-    <%= form.label :name %>
-    <%= form.text_field :name %>
-  </div>
+<% if current_user.admin == false %>
+  <%= form_with(model: bixe_sends_task, local: true) do |form| %>
+    <% if bixe_sends_task.errors.any? %>
+      <div id="error_explanation">
+        <h2><%= pluralize(bixe_sends_task.errors.count, "error") %> prohibited this bixe_sends_task from being saved:</h2>
 
-  <div class="field">
-    <%= form.label :description %>
-    <%= form.text_field :description %>
-  </div>
+        <ul>
+        <% bixe_sends_task.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+        </ul>
+      </div>
+    <% end %>
 
-  <div class="field">
-    <%= form.label :score_type %>
-    <%= form.text_field :score_type %>
-  </div>
+    <h1>Mande o arquivo para a prova!</h1>
+    
+    <%= form.label "Task ID" %>
+    <%= form.text_field :task_id %><br>
+    
+    <%= form.label "Índice" %>
+    <%= form.text_field :index %><br>
 
-  <div class="field">
-    <%= form.label :have_score %>
-    <%= form.check_box :have_score %>
-  </div>
+    <%= form.label "Foto da prova" %>
+    <%= form.file_field :photo %><br>
+    
+    <%= bixe_sends_task.to_json %><br>
 
-  <div class="field">
-    <%= form.label :group %>
-    <%= form.check_box :group %>
-  </div>
-
-  <div class="field">
-    <%= form.label :send %>
-    <%= form.check_box :send %>
-  </div>
-
-  <div class="field">
-    <%= form.label :max_send %>
-    <%= form.number_field :max_send %>
-  </div>
-
-  <div class="field">
-    <%= form.label :have_feedback %>
-    <%= form.check_box :have_feedback %>
-  </div>
-
-  <div class="actions">
-    <%= form.submit %>
-  </div>
+    <div class="actions">
+      <%= form.submit %>
+    </div>
+  <% end %>
 <% end %>

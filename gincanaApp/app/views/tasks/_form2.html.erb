@@ -1,0 +1,26 @@
+<%= form_with(model: bixe_sends_task, local: true) do |form| %>
+  <% if bixe_sends_task.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(bixe_sends_task.errors.count, "error") %> prohibited this bixe_sends_task from being saved:</h2>
+
+      <ul>
+      <% bixe_sends_task.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <h1>Mande o arquivo para a prova!</h1>
+  <p><b>Prova:</b> 
+  <%  @task = Task.find(params["task_id"]) %>
+  <%= @task.name %>
+  </p>
+  
+  <%= form.label "Foto da prova" %>
+  <%= form.file_field :photo %><br>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

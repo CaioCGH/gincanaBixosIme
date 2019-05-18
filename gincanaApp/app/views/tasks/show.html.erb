@@ -39,9 +39,16 @@
   <strong>Have feedback:</strong>
   <%= @task.have_feedback %>
 </p>
+<% @bixe_sends_task = BixeSendsTask.new %>
+<% @bixe_sends_task.task_id = @task.id %>
+<%= @bixe_sends_task.to_json %>
+<%= render 'form', task: @task, bixe_sends_task: @bixe_sends_task%>
 
-<% if current_user.admin == true %>
-  <%= link_to 'Edit', edit_task_path(@task) %>
-<% end %>
 
 <%= link_to 'Back', root_path %>
+
+<ul class="hmenu">
+  <%= render 'devise/menu/registration_items' %>
+  <%= render 'devise/menu/login_items' %>
+</ul>
+<%= yield %>

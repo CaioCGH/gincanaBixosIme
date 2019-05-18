@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  bixe_id: 1
+  task_id: MyString
+  integer: MyString
+  is_valid: false
+  score: 
+
+two:
+  bixe_id: 1
+  task_id: MyString
+  integer: MyString
+  is_valid: false
+  score: 

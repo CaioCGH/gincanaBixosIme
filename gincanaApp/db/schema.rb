@@ -10,7 +10,42 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_05_18_001041) do
+ActiveRecord::Schema.define(version: 2019_05_18_184443) do
+
+  create_table "active_storage_attachments", force: :cascade do |t|
+    t.string "name", null: false
+    t.string "record_type", null: false
+    t.integer "record_id", null: false
+    t.integer "blob_id", null: false
+    t.datetime "created_at", null: false
+    t.index ["blob_id"], name: "index_active_storage_attachments_on_blob_id"
+    t.index ["record_type", "record_id", "name", "blob_id"], name: "index_active_storage_attachments_uniqueness", unique: true
+  end
+
+  create_table "active_storage_blobs", force: :cascade do |t|
+    t.string "key", null: false
+    t.string "filename", null: false
+    t.string "content_type"
+    t.text "metadata"
+    t.bigint "byte_size", null: false
+    t.string "checksum", null: false
+    t.datetime "created_at", null: false
+    t.index ["key"], name: "index_active_storage_blobs_on_key", unique: true
+  end
+
+  create_table "bixe_sends_tasks", force: :cascade do |t|
+    t.integer "bixe_id"
+    t.integer "task_id"
+    t.integer "index"
+    t.boolean "is_valid"
+    t.string "feedback"
+    t.decimal "score"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["bixe_id", "task_id"], name: "index_bixe_sends_tasks_on_bixe_id_and_task_id"
+    t.index ["bixe_id"], name: "index_bixe_sends_tasks_on_bixe_id"
+    t.index ["task_id"], name: "index_bixe_sends_tasks_on_task_id"
+  end
 
   create_table "bixes", force: :cascade do |t|
     t.string "name"
@@ -22,16 +57,6 @@ ActiveRecord::Schema.define(version: 2019_05_18_001041) do
     t.datetime "updated_at", null: false
     t.integer "team_id"
     t.index ["team_id"], name: "index_bixes_on_team_id"
-  end
-
-  create_table "envios", force: :cascade do |t|
-    t.integer "bixe_id"
-    t.integer "task_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["bixe_id", "task_id"], name: "index_envios_on_bixe_id_and_task_id", unique: true
-    t.index ["bixe_id"], name: "index_envios_on_bixe_id"
-    t.index ["task_id"], name: "index_envios_on_task_id"
   end
 
   create_table "profiles", force: :cascade do |t|

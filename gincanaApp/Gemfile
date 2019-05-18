@@ -36,6 +36,10 @@ gem 'jbuilder', '~> 2.5'
 # Authentication
 gem 'devise'
 
+# Send images
+# gem 'paperclip'
+# paper clip estava dando problemas com sdk, então resolvi testar o active storage
+
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.1.0', require: false
 
