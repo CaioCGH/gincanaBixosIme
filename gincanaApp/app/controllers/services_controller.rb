@@ -4,6 +4,9 @@ class ServicesController < ApplicationController
   # GET /services
   # GET /services.json
   def index
+    if !current_user.admin then
+      redirect_back fallback_location: root_path
+    end
     @services = Service.all
   end
 

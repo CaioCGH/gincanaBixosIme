@@ -4,6 +4,9 @@ class BixesController < ApplicationController
   # GET /bixes
   # GET /bixes.json
   def index
+    if !current_user.admin then
+      redirect_back fallback_location: root_path
+    end
     @bixes = Bixe.all
   end
 

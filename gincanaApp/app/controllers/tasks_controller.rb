@@ -4,12 +4,16 @@ class TasksController < ApplicationController
   # GET /tasks
   # GET /tasks.json
   def index
+    if !current_user.admin then
+      redirect_back fallback_location: root_path
+    end
     @tasks = Task.all
   end
 
   # GET /tasks/1
   # GET /tasks/1.json
   def show
+    @sent_task = BixeSendsTask.all
   end
 
   # GET /tasks/new

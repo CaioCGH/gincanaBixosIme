@@ -2,7 +2,8 @@
 
     <p>Bem vinde!</p>
 <br>
-
+<p><%= link_to "Escolha os Eportes", "/select_sport" %>!</p>
+<p><%= link_to "Meus envios", "/envios" %>!</p>
 <p>Tarefas!</p>
 <table>
   <thead>
@@ -49,4 +50,11 @@
   <%= link_to 'Esporte', sports_path%><br>
   <%= link_to 'Tarefa', tasks_path%><br>
   <%= link_to 'Time', teams_path%><br>
+  <%= link_to 'Feedback', bixe_sends_tasks_path%><br>
 <% end %>
+
+<ul class="hmenu">
+  <%= render 'devise/menu/registration_items' %>
+  <%= render 'devise/menu/login_items' %>
+</ul>
+<%= yield %>
