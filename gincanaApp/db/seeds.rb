@@ -15,7 +15,7 @@ task2.save!
 # Adm
 admin = User.new(email: "adm@adm", password: "admins", admin: true)
 admin.save!
-badm = Bixe.new(name: "victor", telephone: "1234", course: "BCC", tutor: false, is_valid: true)
+badm = Bixe.new(name: "victor", telephone: "123456789", course: "BCC", tutor: true, is_valid: false)
 badm.save!
 #rel = RelUserBixe.new(user_id: admin.id, bixe_id: badm.id)
 #rel.save!
@@ -33,7 +33,7 @@ time.save!
 # Bixo
 bixemaster = User.new(email: "bixe@usp.br", password: "bixe123", admin: false)
 bixemaster.save!
-bixe = Bixe.new(name: "bixezera", telephone: "4321", course: "Pura", tutor: true, is_valid: false)
+bixe = Bixe.new(name: "bixezera", telephone: "987654321", course: "Pura", tutor: false, is_valid: false)
 bixe.save!
 #rel2 = RelUserBixe.new(user_id: bixe.id, bixe_id: bixemaster.id)
 #rel2.save!
