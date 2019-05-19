@@ -4,6 +4,9 @@ class BixeSendsTasksController < ApplicationController
   # GET /bixe_sends_tasks
   # GET /bixe_sends_tasks.json
   def index
+    if !current_user.admin then
+      redirect_back fallback_location: root_path
+    end
     @bixe_sends_tasks = BixeSendsTask.all
   end
 
@@ -24,9 +27,7 @@ class BixeSendsTasksController < ApplicationController
   # POST /bixe_sends_tasks
   # POST /bixe_sends_tasks.json
   def create
-    puts 'AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA\n '  + params.to_s
     @bixe_sends_task = BixeSendsTask.new(bixe_sends_task_params)
-    puts 'AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA\n '  + bixe_sends_task_params.to_s
     @user = current_user
     @rel_user_bixe = RelUserBixe.find_by_user_id(@user.id)
     @bixe = Bixe.find(@rel_user_bixe.bixe_id)
@@ -78,7 +79,6 @@ class BixeSendsTasksController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def bixe_sends_task_params
-      puts 'AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA\n '  + params.to_json
       params.require(:bixe_sends_task).permit(:task_id, :bixe_id, :task_id, :is_valid, :index, :score, :photo)
     end
 end

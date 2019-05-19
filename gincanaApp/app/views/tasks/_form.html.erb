@@ -1,5 +1,4 @@
 <% if current_user.admin == true %>
-  <%= current_user.to_json %>
   <%= form_with(model: task, local: true) do |form| %>
     <% if task.errors.any? %>
       <div id="error_explanation">
@@ -74,17 +73,14 @@
     <% end %>
 
     <h1>Mande o arquivo para a prova!</h1>
-    
-    <%= form.label "Task ID" %>
-    <%= form.text_field :task_id %><br>
-    
+
+    <%= form.hidden_field :task_id, :value=>@task.id %>
+
     <%= form.label "Índice" %>
     <%= form.text_field :index %><br>
 
     <%= form.label "Foto da prova" %>
     <%= form.file_field :photo %><br>
-    
-    <%= bixe_sends_task.to_json %><br>
 
     <div class="actions">
       <%= form.submit %>

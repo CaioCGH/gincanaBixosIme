@@ -9,4 +9,13 @@ class HomeController < ApplicationController
     end
   end
 
+  def select_sport
+    @sports = Sport.all
+    @relsport = RelBixeSport.new
+  end
+
+  def envios
+    @rel_bixe_sports = RelBixeSport.all
+  end
+
 end

@@ -41,11 +41,37 @@
 </p>
 <% @bixe_sends_task = BixeSendsTask.new %>
 <% @bixe_sends_task.task_id = @task.id %>
-<%= @bixe_sends_task.to_json %>
 <%= render 'form', task: @task, bixe_sends_task: @bixe_sends_task%>
 
 
 <%= link_to 'Back', root_path %>
+
+<% if current_user.admin == true %>
+<table>
+  <thead>
+    <tr>
+      <th>Bixe</th>
+      <th>Índice</th>
+      <th>Envio</th>
+      <th>Válido</th>
+      <th>Feedback</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+  <% @sent_task.where(task_id: @task.id).each do |t| %>
+    <tr>
+      <td><%= Bixe.find(t.bixe_id).name %></td>
+      <td><%= t.index %></td>
+      <td><%= link_to "Envio", t %></td>
+      <td><%= t.is_valid %></td>
+      <td><%= t.feedback %></td>
+    </tr>
+  <% end %>
+  </tbody>
+</table>
+<% end %>
 
 <ul class="hmenu">
   <%= render 'devise/menu/registration_items' %>

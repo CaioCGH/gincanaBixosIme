@@ -4,6 +4,9 @@ class TeamsController < ApplicationController
   # GET /teams
   # GET /teams.json
   def index
+    if !current_user.admin then
+      redirect_back fallback_location: root_path
+    end
     @teams = Team.all
   end
 

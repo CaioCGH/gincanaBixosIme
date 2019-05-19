@@ -33,9 +33,19 @@ time.save!
 
 # Bixo
 user1 = User.new(email: "bixe@usp.br", password: "bixe123", admin: false)
-user1.save
+user1.save!
 bixe1 = Bixe.new(name: "Bixezera", telephone: "4321", course: "Pura", tutor: true, is_valid: false)
-bixe1.save
+bixe1.save!
 RelUserBixe.create(user_id: user1.id, bixe_id: bixe1.id)
 #rel2 = RelUserBixe.new(user_id: bixe.id, bixe_id: bixemaster.id)
 #rel2.save!
+
+# Esportes
+sport1 = Sport.new(name: "Basquete")
+sport2 = Sport.new(name: "Mahjong")
+sport3 = Sport.new(name: "Vôlei")
+sport4 = Sport.new(name: "Ultimate")
+sport1.save!
+sport2.save!
+sport3.save!
+sport4.save!

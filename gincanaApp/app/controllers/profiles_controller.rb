@@ -4,6 +4,9 @@ class ProfilesController < ApplicationController
   # GET /profiles
   # GET /profiles.json
   def index
+    if !current_user.admin then
+      redirect_back fallback_location: root_path
+    end
     @profiles = Profile.all
   end
 

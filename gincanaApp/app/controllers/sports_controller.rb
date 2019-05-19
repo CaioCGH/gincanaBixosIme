@@ -4,6 +4,9 @@ class SportsController < ApplicationController
   # GET /sports
   # GET /sports.json
   def index
+    if !current_user.admin then
+      redirect_back fallback_location: root_path
+    end
     @sports = Sport.all
   end
 

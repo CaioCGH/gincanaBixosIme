@@ -31,7 +31,7 @@
     <%= @bixe_sends_task.bixe_id %>
   </p>
 
-  
+
 
   <p>
     <strong>Is valid:</strong>
@@ -46,4 +46,4 @@
 
 
 <%= link_to 'Edit', edit_bixe_sends_task_path(@bixe_sends_task) %> |
-<%= link_to 'Back', bixe_sends_tasks_path %>
+<%= link_to 'Back', task_path(@bixe_sends_task.task_id) %>
