@@ -1,24 +1,26 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Primeiro verifique que você tem
+```
+Ruby v.2.5
+Rails v.5
+SQLite3
+```
+instalados.
 
-Things you may want to cover:
+Então dentro do diretório `/ginganaApp` inicie o banco de dados:
+```
+rails db:create
+rails db:migrate
+rails db:seed
+```
+Com a base de dados pronta, inicie o servidor:
 
-* Ruby version
+```
+rails server
+```
 
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+Você poderá então verificar a aplicação em
+```
+localhost:3000
+```
