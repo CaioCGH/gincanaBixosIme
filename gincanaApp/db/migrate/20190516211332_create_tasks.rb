@@ -6,7 +6,7 @@ class CreateTasks < ActiveRecord::Migration[5.2]
       t.string :score_type
       t.boolean :have_score
       t.boolean :group
-      t.boolean :send
+      t.boolean :sendable
       t.integer :max_send
       t.boolean :have_feedback
 

@@ -34,16 +34,16 @@ ActiveRecord::Schema.define(version: 2019_05_18_184443) do
   end
 
   create_table "bixe_sends_tasks", force: :cascade do |t|
-    t.integer "bixe_id"
     t.integer "task_id"
+    t.integer "bixe_id"
     t.integer "index"
     t.boolean "is_valid"
     t.string "feedback"
     t.decimal "score"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["bixe_id", "task_id"], name: "index_bixe_sends_tasks_on_bixe_id_and_task_id"
     t.index ["bixe_id"], name: "index_bixe_sends_tasks_on_bixe_id"
+    t.index ["task_id", "bixe_id"], name: "index_bixe_sends_tasks_on_task_id_and_bixe_id"
     t.index ["task_id"], name: "index_bixe_sends_tasks_on_task_id"
   end
 
@@ -124,7 +124,7 @@ ActiveRecord::Schema.define(version: 2019_05_18_184443) do
     t.string "score_type"
     t.boolean "have_score"
     t.boolean "group"
-    t.boolean "send"
+    t.boolean "sendable"
     t.integer "max_send"
     t.boolean "have_feedback"
     t.datetime "created_at", null: false

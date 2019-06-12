@@ -27,20 +27,22 @@ class BixesController < ApplicationController
   # POST /bixes
   # POST /bixes.json
   def create
-    @bix = Bixe.new(bix_params)
-    @bix.is_valid = false
+    @bixe = Bixe.new(bix_params)
+    bixe_id = Bixe.last.id + 1 
+    @bixe.team_id = bixe_id%4
+    @bixe.is_valid = false
 
     respond_to do |format|
-      if @bix.save
+      if @bixe.save
         format.html { redirect_to root_path, notice: 'Bixe was successfully created.' }
-        format.json { render :show, status: :created, location: @bix }
+        format.json { render :show, status: :created, location: @bixe }
       else
         format.html { render :new }
-        format.json { render json: @bix.errors, status: :unprocessable_entity }
+        format.json { render json: @bixe.errors, status: :unprocessable_entity }
       end
     end
 
-    @relub = RelUserBixe.new(user_id: current_user.id, bixe_id: @bix.id)
+    @relub = RelUserBixe.new(user_id: current_user.id, bixe_id: @bixe.id, bixe: @bixe)
     @relub.save!
   end
 

@@ -24,3 +24,8 @@ Você poderá então verificar a aplicação em
 ```
 localhost:3000
 ```
+
+Para resetar o banco (drop, create, migrate e seed):
+```
+./reset.sh
+```

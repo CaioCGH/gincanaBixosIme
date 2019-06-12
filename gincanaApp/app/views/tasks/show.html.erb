@@ -1,9 +1,6 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Name:</strong>
-  <%= @task.name %>
-</p>
+<p class="big"><strong><%= @task.name %></strong></p>
 
 <p>
   <strong>Description:</strong>
@@ -26,8 +23,8 @@
 </p>
 
 <p>
-  <strong>Send:</strong>
-  <%= @task.send %>
+  <strong>Sendable:</strong>
+  <%= @task.sendable %>
 </p>
 
 <p>
@@ -46,6 +43,21 @@
 
 <%= link_to 'Back', root_path %>
 
+<%pictures = BixeSendsTask.where("bixe_id = #{getBixe.id}")%>
+<% if pictures == [] %>
+  <p class="big">Oops, parece que você ainda não fez nenhum envio!</p>
+<%end%>
+<% pictures.each do |p| %>
+  <div class="card">
+    <p>Índice: <%= p.index %></p>
+    <p>Validada? <%= p.is_valid %></p>
+    <p>Feedback: <%= p.feedback %></p>
+    <% if p.photo.attached? %>
+      <image src="<%=(url_for(p.photo))%>">
+    <% end %>
+    <%= link_to 'Excluir foto', p, method: :delete, data: { confirm: 'Are you sure?' } %>
+  </div>  
+<% end %>
 <% if current_user.admin == true %>
 <table>
   <thead>
@@ -77,4 +89,16 @@
   <%= render 'devise/menu/registration_items' %>
   <%= render 'devise/menu/login_items' %>
 </ul>
+
 <%= yield %>
+<style>
+.big {
+  font-size: 30px;
+  font-color: "red";
+}
+.card {
+  border: 1px solid black;
+  margin: 25px 50px 75px 100px;
+  background-color: lightblue;
+}
+</style>
