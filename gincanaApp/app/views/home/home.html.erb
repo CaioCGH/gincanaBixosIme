@@ -1,9 +1,13 @@
-<h1>Gincana dos Bixos do Ime</h1>
+<ul class="navbar">
+    <li class="litit"><a class="menutitulo">Gincana dos Bixos do Ime</a></li>
+    <li class="lilink"><a class="menulink"><%= link_to "Eportes", "/select_sport" %></a></li>
+    <li class="lilink"><a class="menulink"><%= link_to "Envios", "/envios" %></a></li>
+    <li class="lilink"><a class="menulink"><%= render 'devise/menu/registration_items' %></a></li>
+    <li class="lilink"><a class="menulink"><%= render 'devise/menu/login_items' %></a></li>
+</ul>
 
     <p>Bem vinde!</p>
 <br>
-<p><%= link_to "Escolha os Eportes", "/select_sport" %>!</p>
-<p><%= link_to "Meus envios", "/envios" %>!</p>
 <p>Tarefas!</p>
 <table>
   <thead>
@@ -53,8 +57,4 @@
   <%= link_to 'Feedback', bixe_sends_tasks_path%><br>
 <% end %>
 
-<ul class="hmenu">
-  <%= render 'devise/menu/registration_items' %>
-  <%= render 'devise/menu/login_items' %>
-</ul>
 <%= yield %>

@@ -1,3 +1,31 @@
 // Place all the styles related to the home controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+.navbar {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: red;
+}
+
+.lilink{
+    display: inline;
+    float: right;
+}
+
+.litit{
+    display: inline;
+    float: left;
+}
+
+
+.menutitulo{
+    padding: 14px 16px;
+    color: white;
+}
+
+.menulink{
+    display: block;
+    padding: 14px 16px;
+}
