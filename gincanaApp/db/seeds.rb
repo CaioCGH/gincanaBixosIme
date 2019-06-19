@@ -8,7 +8,7 @@
 
 # Tasks
 
-# puts 'Tasks created'
+puts 'Seeding Task!'
 if Task.last == nil
     task1 = Task.new(
         name: "Palestras",
@@ -83,14 +83,4 @@ if Sport.last == nil
     sport4.save!
 end
 
-puts 'Seeding tasks!'
-if Task.last == nil
-    task1 = Task.new(name: "Palestras" , description: "Presença em palestras vale 50 pontos" , score_type: "Cada Palestra 50 pontos" , have_score: false , group: false , send: false, max_send: 10, have_feedback: true)
-    task2 = Task.new(name: "Fantasia" , description: "Virá fantasiado todos os dias" , score_type: "Cada fantasia somar pontos" , have_score: true , group: false , send: false, max_send: 4, have_feedback: false)
-    task3 = Task.new(name: "Fotos da USP" , description: "Mande fotos de vários lugares da USP!" , score_type: "Cada foto validada soma 50 pontos" , have_score: true , group: false , send: true, max_send: 50, have_feedback: true)
-    puts 'batata'
-    # task1.save!
-    # task2.save!
-    # task3.save!
-end
 puts 'Seed complete!'
