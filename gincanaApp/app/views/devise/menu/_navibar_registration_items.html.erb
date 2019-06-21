@@ -1,0 +1,5 @@
+<% if user_signed_in? %>
+  <div class ="navi_item link" > <%= link_to 'Editar minha conta', edit_user_registration_path, :style => 'color: #FFFFFF;' %></div>
+<% else %>
+  <div class ="navi_item link" > <%= link_to 'Registrar', new_user_registration_path, :style => 'color: #FFFFFF;'  %></div>
+<% end %>

@@ -1,62 +1,73 @@
 <%= favicon_link_tag %>
 
-<ul class="navbar">
-    <li class="litit"><a class="menutitulo">Gincana dos Bixos do Ime</a></li>
-    <li class="lilink"><a class="menulink"><%= link_to "Eportes", "/select_sport" %></a></li>
-    <li class="lilink"><a class="menulink"><%= link_to "Envios", "/envios" %></a></li>
-    <li class="lilink"><a class="menulink"><%= render 'devise/menu/registration_items' %></a></li>
-    <li class="lilink"><a class="menulink"><%= render 'devise/menu/login_items' %></a></li>
-</ul>
+  <% if @user.admin == true %>
+    <h1>Seja bem vinde, admin cujo email é <%= @user.email %>!</h1>
+  <% else %>
+    <h1>Seja bem vinde, <%= getBixe.name %>!</h1>
+  <%end%>
+   <div class="tasks_wrapper">
 
-    <p>Bem vinde!</p>
-<br>
-<p>Tarefas!</p>
-<table>
-  <thead>
-    <tr>
-      <th>Nome</th>
-      <th>Descrição</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-  <tbody>
-    <% @tasks.each do |task| %>
-      <tr>
-        <td><%= link_to task.name, task %></td>
-        <td><%= task.description %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+    <h2>Tarefas:</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>Nome</th>
+          <th>Descrição</th>
+          <th colspan="3"></th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @tasks.each do |task| %>
+          <tr>
+            <td><%= link_to task.name, task %></td>
+            <td><%= task.description %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
 
-<p>Times</p>
-<table>
-  <thead>
-    <tr>
-      <th>Nome</th>
-      <th>Pontos</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-  <tbody>
-    <% @teams.each do |team| %>
-      <tr>
-        <td><%= team.name %></td>
-        <td><%= team.score %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+  <div class="tasks_wrapper">
+    <h2>Times</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>Nome</th>
+          <th>Pontos</th>
+          <th colspan="3"></th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @teams.each do |team| %>
+          <tr>
+            <td><%= team.name %></td>
+            <td><%= team.score %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
 
-<% if @user.admin == true %>
-  <p> Painel de Controle </p>
-  <%= link_to 'Bixes', bixes_path%><br>
-  <%= link_to 'Profiles', profiles_path%><br>
-  <%= link_to 'Serviço', services_path%><br>
-  <%= link_to 'Esporte', sports_path%><br>
-  <%= link_to 'Tarefa', tasks_path%><br>
-  <%= link_to 'Time', teams_path%><br>
-  <%= link_to 'Feedback', bixe_sends_tasks_path%><br>
-<% end %>
+  <% if @user.admin == true %>
+  <div class="tasks_wrapper">
+    <h2> Painel de Controle </h2>
+    <%= link_to 'Bixes', bixes_path%><br>
+    <%= link_to 'Profiles', profiles_path%><br>
+    <%= link_to 'Serviço', services_path%><br>
+    <%= link_to 'Esporte', sports_path%><br>
+    <%= link_to 'Tarefa', tasks_path%><br>
+    <%= link_to 'Time', teams_path%><br>
+    <%= link_to 'Feedback', bixe_sends_tasks_path%><br>
+  </div> 
+  <% end %>
 
-<%= yield %>
+  <%= yield %>
+<style>
+
+.tasks_wrapper {
+  border: 1px solid black;
+  margin: 1% 1% 0% 0%;
+  padding: 1% 1% 1% 1%;
+  background-color: #c6d9ec;
+}
+</style>

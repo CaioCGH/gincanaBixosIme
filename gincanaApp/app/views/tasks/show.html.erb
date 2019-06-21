@@ -1,5 +1,4 @@
 <%= favicon_link_tag %>
-<div class="page_wrapper">
   <p id="notice"><%= notice %></p>
 
   <p class="big"><strong>Tarefa: <%= @task.name %></strong></p>
@@ -78,13 +77,8 @@
   </table>
   <% end %>
   <%= link_to 'Voltar', root_path %>
-  <ul class="hmenu">
-    <%= render 'devise/menu/registration_items' %>
-    <%= render 'devise/menu/login_items' %>
-  </ul>
 
   <%= yield %>
-</div>
 <style>
 .big {
   font-size: 30px;
@@ -95,8 +89,7 @@
   width: 30%;
   margin: 1%;
   background-color: lightblue;
-  padding-top: -20%;
-  padding: -1%;
+  padding: 1%;
   
 }
 .status_wrapper {
@@ -108,17 +101,7 @@
   flex-wrap: wrap;
   border: 1px solid black;
   margin: 1%;
-}
-.page_wrapper {
-  border: 1px solid black;
-  margin-top: -1%;
-  margin-bottom: 1%;
-  margin-right: -1%;
-  margin-left: -1%;
-  padding-top: -5px;
-  padding-right: 1%;
-  padding-bottom: 1%;
-  padding-left: 1%;
+  background-color: #d9e6f2;
 }
 .image {
   max-height: 100%;

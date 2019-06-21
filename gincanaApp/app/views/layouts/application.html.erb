@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
+
     <title>GincanaBixesIme</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
@@ -9,9 +10,24 @@
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
-  <body>
-    <%= yield %>
+  <body>  
+
+    <header>
+      <ul class="navbar">
+        <a class="menutitulo">Gincana dos Bixos do Ime</a></li>
+        <div class="links_wrapper">
+          <li class="navi_item"><%= link_to "Eportes", "/select_sport", {:style => 'color: #FFFFFF;', :class => "link"} %></li>
+          <li class="navi_item"><%= link_to "Envios", "/envios", {:style => 'color: #FFFFFF;', :class => "link"}%></li>
+          <li class="navi_item"><%= render 'devise/menu/navibar_registration_items'%></li>
+          <li class="navi_item"><%= render 'devise/menu/navibar_login_items'%></li>
+        </div>
+      </ul>
+    </header>
     <p class="notice"><%= notice %></p>
     <p class="alert"><%= alert %></p>
+    <div class="page_wrapper">
+      <%= yield %>
+    </div>
   </body>
 </html>
+

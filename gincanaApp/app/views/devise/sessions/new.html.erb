@@ -1,26 +1,67 @@
-<h2>Log in</h2>
-
-<%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
-  </div>
-
-  <div class="field">
-    <%= f.label :password %><br />
-    <%= f.password_field :password, autocomplete: "current-password" %>
-  </div>
-
-  <% if devise_mapping.rememberable? %>
-    <div class="field">
-      <%= f.check_box :remember_me %>
-      <%= f.label :remember_me %>
+  <div class="banner">
+    <%= image_tag "camatLogo.jpg", :class => "img" %>
+    <div class="banner_title">
+      <h1>Gincana dos Bixes IME!</h1>
+      <h2>Organizado pelo Comitê de Recepção <h2>
     </div>
-  <% end %>
-
-  <div class="actions">
-    <%= f.submit "Log in" %>
   </div>
-<% end %>
+  <h2 class="login_title">Faça seu Log in!</h2>
 
+  <div class="form_wrapper">
+    <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+      <div class="field">
+        <%= f.label :email %><br />
+        <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+      </div>
+
+      <div class="field">
+        <%= f.label :senha %><br />
+        <%= f.password_field :password, autocomplete: "current-password" %>
+      </div>
+
+      <% if devise_mapping.rememberable? %>
+        <div class="field">
+          <%= f.check_box :remember_me %>
+          <%= f.label :"lembre-me" %>
+        </div>
+      <% end %>
+
+      <div class="actions">
+        <%= f.submit "Login" %>
+      </div>
+    <% end %>
+  </div>
+<style>
+
+.form_wrapper {
+  background-color: #8cb3d9;
+  border: 1px solid black;
+  margin: 1% 1% 1% 1%;
+  padding-top: 1%;
+  padding-right: 1%;
+  padding-bottom: 1%;
+  padding-left: 1%;
+}
+.banner{
+  display: flex;
+  flex-direction: row;
+  border: 1px solid black;
+  width: 90%;
+  height: 15vh;
+  margin: 1%;
+  background-color: #8cb3d9;
+  padding: 1%;
+  
+}
+.banner_title{
+  padding: 1%;
+}
+.img {
+  max-height: 100%;
+  max-width: 100%;
+}
+.login_title{
+  margin-left: 2%;
+}
+</style>
 <%= render "devise/shared/links" %>
