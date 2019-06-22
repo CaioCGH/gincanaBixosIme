@@ -1,10 +1,10 @@
-<p id="notice"><%= notice %></p>
-
 <% if current_user.admin == false %>
   <p>Vizualize seu envio!</p>
+  <% end %>
+  
   <p>
-    <strong>Task:</strong>
-    <%= @bixe_sends_task.task_id %>
+    <strong>Tarefa:</strong>
+    <%= getTask(@bixe_sends_task).name %>
   </p>
   <p>
     <strong>Índice:</strong>
@@ -18,30 +18,21 @@
     <strong>Feedback:</strong>
     <%= @bixe_sends_task.feedback %>
   </p>
-<% end %>
-
-
-<% if @bixe_sends_task.photo.attached? %>
-<image src="<%=(url_for(@bixe_sends_task.photo))%>">
-<% end %>
 
 <% if current_user.admin == true %>
   <p>
     <strong>Bixe:</strong>
-    <%= @bixe_sends_task.bixe_id %>
-  </p>
-
-
-
-  <p>
-    <strong>Is valid:</strong>
-    <%= @bixe_sends_task.is_valid %>
+    <%= getBixe(@bixe_sends_task).name %>
   </p>
 
   <p>
     <strong>Score:</strong>
     <%= @bixe_sends_task.score %>
   </p>
+<% end %>
+
+<% if @bixe_sends_task.photo.attached? %>
+  <image src="<%=(url_for(@bixe_sends_task.photo))%>">
 <% end %>
 
 

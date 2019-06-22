@@ -1,36 +1,35 @@
-<p id="notice"><%= notice %></p>
-
 <p>
-  <strong>Name:</strong>
-  <%= @bix.name %>
+  <strong>Nome:</strong>
+  <%= @bixe.name %>
 </p>
 
 <p>
-  <strong>Telephone:</strong>
-  <%= @bix.telephone %>
+  <strong>Telefone:</strong>
+  <%= @bixe.telephone %>
 </p>
 
 <p>
-  <strong>Course:</strong>
-  <%= @bix.course %>
+  <% @course = getCourse(@bixe) %>
+  <strong>Curso:</strong>
+  <%= @course.nickname %>
 </p>
 
 <p>
   <strong>Tutor:</strong>
-  <%= @bix.tutor %>
+  <%= @bixe.tutor %>
 </p>
 
 <p>
-  <strong>Is valid:</strong>
-  <%= @bix.is_valid %>
+  <strong>Validado?:</strong>
+  <%= @bixe.is_valid %>
 </p>
 
 <p>
-  <strong>Team:</strong>
-  <% if  @bix.team_id != nil %>
-    <%= Team.find(@bix.team_id).name %>
+  <strong>Time:</strong>
+  <% if  @bixe.team_id != nil %>
+    <%= Team.find(@bixe.team_id).name %>
   <%end%>
 </p>
 
-<%= link_to 'Edit', edit_bix_path(@bix) %> |
-<%= link_to 'Back', root_path %>
+<%= link_to 'Editar', edit_bix_path(@bixe) %> |
+<%= link_to 'Volta', bixes_path %>

@@ -9,12 +9,12 @@
 puts 'Seeding Courses!'
 # Cursos
 if Course.last == nil
-    Course.create(name: "Bacharelado em Ciência da Computação")
-    Course.create(name: "Bacharelado em Estatística")
-    Course.create(name: "Bacharelado em Matemática")
-    Course.create(name: "Licenciatura em Matemática")
-    Course.create(name: "Bacharelado em Matemática Aplicada")
-    Course.create(name: "Bacharelado em Matemática Aplicada e Computacional")
+    Course.create(name: "Bacharelado em Ciência da Computação", nickname: "BCC")
+    Course.create(name: "Bacharelado em Estatística", nickname: "Stat")
+    Course.create(name: "Bacharelado em Matemática", nickname: "Pura")
+    Course.create(name: "Licenciatura em Matemática", nickname: "Lic")
+    Course.create(name: "Bacharelado em Matemática Aplicada", nickname: "Aplicada")
+    Course.create(name: "Bacharelado em Matemática Aplicada e Computacional", nickname: "BMAC")
 end
 
 # Tasks
@@ -59,14 +59,31 @@ puts 'Seeding users!'
 if User.last == nil
     # Adm
     User.create(email: "adm@adm", password: "admins", admin: true)
-    User.create(email: "bixe@usp.br", password: "bixe123", admin: false)
+    User.create(email: "william.shatner@usp.br", password: "bixe123", admin: false)
+    User.create(email: "william.shakespeare@usp.br", password: "bixe123", admin: false)
+    User.create(email: "karl.marx@usp.br", password: "bixe123", admin: false)
+    User.create(email: "angelina.jolie@usp.br", password: "bixe123", admin: false)
+    User.create(email: "50.cent@usp.br", password: "bixe123", admin: false)
+    User.create(email: "roald.dahl@usp.br", password: "bixe123", admin: false)
 end
 
 puts 'Seeding bixes!'
 # Bixo
 if Bixe.last == nil
-    Bixe.create(name: "Júlio César", telephone: "987654321", course_id: 1, team_id: 1, tutor: false, is_valid: false)
-    RelUserBixe.create(user_id: 2, bixe_id: 1)
+    Bixe.create(name: "NoUSer", telephone: "987654321", course_id: 1, team_id: 1, tutor: true, is_valid: false)
+    Bixe.destroy(1)
+    Bixe.create(name: "William Shatner", telephone: "987654321", course_id: 1, team_id: 1, tutor: true, is_valid: false)
+    Bixe.create(name: "William Shakespeare", telephone: "987654321", course_id: 2, team_id: 2, tutor: true, is_valid: false)
+    Bixe.create(name: "Karl Marx", telephone: "987654321", course_id: 3, team_id: 3, tutor: true, is_valid: false)
+    Bixe.create(name: "Angelina Jolie", telephone: "987654321", course_id: 4, team_id: 4, tutor: false, is_valid: false)
+    Bixe.create(name: "50 Cent", telephone: "987654321", course_id: 5, team_id: 1, tutor: false, is_valid: false)
+    Bixe.create(name: "Roald Dahl", telephone: "987654321", course_id: 6, team_id: 2, tutor: false, is_valid: false)
+    RelUserBixe.create(user_id: 2, bixe_id: 2)
+    RelUserBixe.create(user_id: 3, bixe_id: 3)
+    RelUserBixe.create(user_id: 4, bixe_id: 4)
+    RelUserBixe.create(user_id: 5, bixe_id: 5)
+    RelUserBixe.create(user_id: 6, bixe_id: 6)
+    RelUserBixe.create(user_id: 7, bixe_id: 7)
 end
 puts 'Seeding sports!'
 # Esportes
@@ -75,10 +92,33 @@ if Sport.last == nil
     Sport.create(name: "Mahjong")
     Sport.create(name: "Vôlei")
     Sport.create(name: "Ultimate")
-    RelBixeSport.create(bixe_id: 1, sport_id: 1)
-    RelBixeSport.create(bixe_id: 1, sport_id: 2)
-    RelBixeSport.create(bixe_id: 1, sport_id: 3)
+    RelBixeSport.create(bixe_id: 2, sport_id: 1)
+    RelBixeSport.create(bixe_id: 2, sport_id: 2)
+    RelBixeSport.create(bixe_id: 2, sport_id: 3)
 end
+if BixeSendsTask.last == nil
+    ust = BixeSendsTask.new(bixe_id: 2, task_id: 3, index: 1)
+    ust.photo.attach(io: File.open("#{Dir.pwd}/app/assets/images/seeds/ime.jpeg"), filename: 'ime.jpeg')
+    ust.save
+    ust = BixeSendsTask.new(bixe_id: 2, task_id: 3, index: 2)
+    ust.photo.attach(io: File.open("#{Dir.pwd}/app/assets/images/seeds/pracaDoRelogio.jpeg"), filename: 'pracaDoRelogio.jpeg')
+    ust.save
+    ust = BixeSendsTask.new(bixe_id: 2, task_id: 3, index: 3)
+    ust.photo.attach(io: File.open("#{Dir.pwd}/app/assets/images/seeds/reitoria.jpg"), filename: 'reitoria.jpg')
+    ust.save
+    ust = BixeSendsTask.new(bixe_id: 2, task_id: 3, index: 4)
+    ust.photo.attach(io: File.open("#{Dir.pwd}/app/assets/images/seeds/io.jpg"), filename: 'io.jpg')
+    ust.save
+    ust = BixeSendsTask.new(bixe_id: 2, task_id: 3, index: 5)
+    ust.photo.attach(io: File.open("#{Dir.pwd}/app/assets/images/seeds/fau.jpeg"), filename: 'fau.jpeg')
+    ust.save
+    ust = BixeSendsTask.new(bixe_id: 3, task_id: 3, index: 1)
+    ust.photo.attach(io: File.open("#{Dir.pwd}/app/assets/images/seeds/pelletron.jpg"), filename: 'pelletron.jpg')
+    ust.save
+    
+end
+
+
 
 
 puts 'Seed complete!'

@@ -1,0 +1,58 @@
+<% pictures = getPictures %>
+<h2>Fotos não validadas</h2>
+  <div class="card_list">
+      <% pictures[0].each do |p| %>
+          <div class="card">
+              <p class="index"><strong>Índice: </strong> <%= p.index %></br></p>
+              <div class="status_wrapper">
+              <strong>Comentário: </strong> <%= p.feedback %></p></br>
+              </div>
+              <% if p.photo.attached? %>
+              <image class="image" src="<%=(url_for(p.photo))%>">
+              <% end %>
+              <%= link_to 'Detalhes', @p %>              
+          </div>
+      <% end %>
+  </div>
+<h2>Fotos validadas</h2>
+  <div class="card_list">
+      <% pictures[1].each do |p| %>
+          <div class="card">
+              <p class="index"><strong>Índice: </strong> <%= p.index %></br></p>
+              <div class="status_wrapper">
+              <strong>Comentário: </strong> <%= p.feedback %></p></br>
+              </div>
+              <% if p.photo.attached? %>
+              <image class="image" src="<%=(url_for(p.photo))%>">
+              <% end %>
+              <%= form_for p do |t| %>
+                <%= t.hidden_field :is_valid, :value=>true%>
+                <%= t.hidden_field :feedback, :value=>"Certa resposta!" %>
+                <%= t.submit "Validar" %>
+              <% end %>
+              <%= form_for p do |t| %>
+                <%= t.hidden_field :feedback, :value=>"Não era bem essa foto que nós queríamos..." %>
+                <%= t.submit "Invalidar" %>
+              <% end %>
+          </div>
+      <% end %>
+  </div>
+  
+
+<style>
+.big {
+  font-size: 30px;
+  font-color: "red";
+}
+
+.status_wrapper {
+  font-size: 100%;
+}
+.image {
+  max-height: 100%;
+  max-width: 90%;
+}
+.index{
+  font-size: 150%;
+}
+</style>

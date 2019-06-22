@@ -1,5 +1,4 @@
-<p id="notice"><%= notice %></p>
-  <h1>Bixes</h1>
+  <h1>Bixes validados</h1>
 
   <table>
     <thead>
@@ -9,26 +8,68 @@
         <th>Curso</th>
         <th>Tutor?</th>
         <th>Validado?</th>
-        <th colspan="5"></th>
+        <th>Time</th>
+        <th colspan="6"></th>
       </tr>
     </thead>
 
     <tbody>
-      <% @bixes.each do |bix| %>
+      <% @valid_bixes.each do |bix| %>
         <tr>
           <td><%= bix.name %></td>
           <td><%= bix.telephone %></td>
-          <td><%= bix.course %></td>
+          <td><%= getCourse(bix).nickname %></td>
           <td><%= bix.tutor %></td>
           <td><%= bix.is_valid %></td>
-          <td><%= link_to 'Show', bix %></td>
-          <td><%= link_to 'Edit', edit_bix_path(bix) %></td>
-          <td><%= link_to 'Destroy', bix, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+          <td><%= getTeam(bix).name %></td>
+          <td><%= link_to 'Detalhes', bix %></td>
+          <td><%= link_to 'Editar', edit_bix_path(bix) %></td>
+          <td><%= link_to 'Excluir', bix, method: :delete, data: { confirm: 'Are you sure?' } %></td>
           <td>
             <%= form_for bix do |t| %>
               <%= t.hidden_field :is_valid, :value=>true%>
               <%= t.hidden_field :team_id, :value=>bix.id%Team.count+1 %>
-              <%= t.submit "Validate" %>
+              <%= t.submit "Validar" %>
+            <% end %>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+  <br>
+
+  <h1>Bixes não validados</h1>
+
+  <table>
+    <thead>
+      <tr>
+        <th>Nome</th>
+        <th>Telefone</th>
+        <th>Curso</th>
+        <th>Tutor?</th>
+        <th>Validado?</th>
+        <th>Time</th>
+        <th colspan="6"></th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <% @not_valid_bixes.each do |bix| %>
+        <tr>
+          <td><%= bix.name %></td>
+          <td><%= bix.telephone %></td>
+          <td><%= getCourse(bix).nickname %></td>
+          <td><%= bix.tutor %></td>
+          <td><%= bix.is_valid %></td>
+          <td><%= getTeam(bix).name %></td>
+          <td><%= link_to 'Detalhes', bix %></td>
+          <td><%= link_to 'Editar', edit_bix_path(bix) %></td>
+          <td><%= link_to 'Excluir', bix, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+          <td>
+            <%= form_for bix do |t| %>
+              <%= t.hidden_field :is_valid, :value=>true%>
+              <%= t.hidden_field :team_id, :value=>bix.id%Team.count+1 %>
+              <%= t.submit "Validar" %>
             <% end %>
           </td>
         </tr>

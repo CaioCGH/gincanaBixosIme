@@ -16,4 +16,8 @@ module RelBixeSportsHelper
         puts sports_ids
         @sports = Sport.find(sports_ids)
     end
+
+    def interested(sport)
+        RelBixeSport.where("sport_id = #{sport.id}").count
+    end
 end

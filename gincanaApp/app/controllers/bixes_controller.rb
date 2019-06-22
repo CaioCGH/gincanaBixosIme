@@ -8,6 +8,15 @@ class BixesController < ApplicationController
       redirect_back fallback_location: root_path
     end
     @bixes = Bixe.all
+    @valid_bixes = []
+    @not_valid_bixes = []
+    for bixe in @bixes
+      if bixe.is_valid
+        @valid_bixes.append(bixe)
+      else
+        @not_valid_bixes.append(bixe)
+      end
+    end
   end
 
   # GET /bixes/1
@@ -51,7 +60,7 @@ class BixesController < ApplicationController
   def update
     respond_to do |format|
       if @bixe.update(bix_params)
-        format.html { redirect_to @bixe, notice: 'Bixe was successfully updated.' }
+        format.html { redirect_to @bixe, notice: 'Bixe foi atualizado com sucesso.' }
         format.json { render :show, status: :ok, location: @bixe}
       else
         format.html { render :edit }

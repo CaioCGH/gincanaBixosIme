@@ -18,94 +18,23 @@
         <strong>Have feedback:</strong>      <%= @task.have_feedback %></br>
       <% end %>
   </div>
-
-  <% if current_user.admin == false %>
-
-    <% @bixe_sends_task = BixeSendsTask.new %>
-    <% @bixe_sends_task.task_id = @task.id %>
-    <%= render 'form', task: @task, bixe_sends_task: @bixe_sends_task%>
-
-    <%pictures = BixeSendsTask.where("bixe_id = #{getBixe.id} AND task_id = #{@task.id}")%>
-    <% if pictures == [] %>
-      <p class="big">Oops, parece que você ainda não fez nenhum envio!</p>
-    <%end%>
-    <div class="card_list">
-      <% pictures.each do |p| %>
-        <div class="card">
-          <p class="index"><strong>Índice: </strong> <%= p.index %></br></p>
-          <div class="status_wrapper">
-            <% if p.is_valid == true %>
-              A foto <strong>já foi</strong> validada por um veterano!</br>
-            <% else %>
-              A foto <strong>ainda não foi</strong> validada por um veterano!</br>
-            <% end %>
-            <strong>Comentário: </strong> <%= p.feedback %></p></br>
-          </div>
-          <% if p.photo.attached? %>
-            <image class="image" src="<%=(url_for(p.photo))%>">
-          <% end %>
-          <%= link_to 'Excluir foto', p, method: :delete, data: { confirm: 'Tem certeza que deseja excluir a foto?' } %>
-          <%= link_to 'Editar foto', p, method: :update %>
-        </div>
-      <% end %>
-    </div>
-  <%end%>
-  <% if current_user.admin == true %>
-  <table>
-    <thead>
-      <tr>
-        <th>Bixe</th>
-        <th>Índice</th>
-        <th>Envio</th>
-        <th>Válido</th>
-        <th>Feedback</th>
-        <th colspan="3"></th>
-      </tr>
-    </thead>
-
-    <tbody>
-    <% @sent_task.where(task_id: @task.id).each do |t| %>
-      <tr>
-        <td><%= Bixe.find(t.bixe_id).name %></td>
-        <td><%= t.index %></td>
-        <td><%= link_to "Envio", t %></td>
-        <td><%= t.is_valid %></td>
-        <td><%= t.feedback %></td>
-      </tr>
-    <% end %>
-    </tbody>
-  </table>
+  <% if @task.sendable %>
+    <%= render 'bixe_sends_task_index', task: @task %>
   <% end %>
-  <%= link_to 'Voltar', root_path %>
-
-  <%= yield %>
+  <%= link_to 'Voltar', tasks_path %>
 <style>
 .big {
   font-size: 30px;
   font-color: "red";
 }
-.card {
-  border: 1px solid black;
-  width: 30%;
-  margin: 1%;
-  background-color: lightblue;
-  padding: 1%;
-  
-}
+
 .status_wrapper {
   font-size: 100%;
 }
-.card_list {
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  border: 1px solid black;
-  margin: 1%;
-  background-color: #d9e6f2;
-}
+
 .image {
   max-height: 100%;
-  max-width: 90%;
+  max-width: 100%;
 }
 
 .test{

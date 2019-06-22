@@ -51,6 +51,8 @@ class BixeSendsTasksController < ApplicationController
   # PATCH/PUT /bixe_sends_tasks/1.json
   def update
     respond_to do |format|
+      puts "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+      puts 
       if @bixe_sends_task.update(bixe_sends_task_params)
         format.html { redirect_to @bixe_sends_task, notice: 'Bixe sends task was successfully updated.' }
         format.json { render :show, status: :ok, location: @bixe_sends_task }
@@ -79,6 +81,6 @@ class BixeSendsTasksController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def bixe_sends_task_params
-      params.require(:bixe_sends_task).permit(:task_id, :bixe_id, :task_id, :is_valid, :index, :score, :photo)
+      params.require(:bixe_sends_task).permit(:bixe_id, :task_id, :is_valid, :index, :score, :photo, :feedback)
     end
 end
