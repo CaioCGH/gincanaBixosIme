@@ -1,5 +1,5 @@
 <% if current_user.admin == false %>
-  <p>Vizualize seu envio!</p>
+  <h2>Vizualize seu envio!</h2>
   <% end %>
   
   <p>
@@ -12,12 +12,20 @@
   </p>
   <p>
     <strong>Foi validado?</strong>
-    <%= @bixe_sends_task.is_valid %>
+    <%= valid? %>
   </p>
   <p>
-    <strong>Feedback:</strong>
+    <strong>Comentário:</strong>
     <%= @bixe_sends_task.feedback %>
   </p>
+  <% if current_user.admin == true %>
+    <%= form_for @bixe_sends_task do |f| %>
+      <div class="field">
+        <%= f.text_field :feedback %>
+        <%= f.submit "Alterar comentário" %>
+      </div>
+    <% end %>
+  <% end %>
 
 <% if current_user.admin == true %>
   <p>
@@ -26,11 +34,16 @@
   </p>
 
   <p>
-    <strong>Score:</strong>
+    <strong>Pontuação: </strong>
     <%= @bixe_sends_task.score %>
   </p>
+  <%= form_for @bixe_sends_task do |f| %>
+    <div class="field">
+      <%= f.text_field :score %>
+      <%= f.submit "Atribuir pontuação" %>
+    </div>
+  <% end%>
 <% end %>
-
 <% if @bixe_sends_task.photo.attached? %>
   <image src="<%=(url_for(@bixe_sends_task.photo))%>">
 <% end %>

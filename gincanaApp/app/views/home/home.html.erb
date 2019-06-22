@@ -1,9 +1,7 @@
-<%= favicon_link_tag %>
-
   <% if @user.admin == true %>
     <h1>Seja bem vinde, admin cujo email é <%= @user.email %>!</h1>
   <% else %>
-    <h1>Seja bem vinde, <%= getBixe.name %>!</h1>
+    <h1>Seja bem vinde, <%= getBixeFromSession.name %>!</h1>
   <%end%>
    <div class="tasks_wrapper">
 

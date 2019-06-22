@@ -1,4 +1,9 @@
-<% pictures = getPictures %>
+<% pictures = getMyPictures %>
+
+<% @bixe_sends_task = BixeSendsTask.new %>
+
+<%= render 'form', bixe_sends_task: @bixe_sends_task%>
+
 <h2>Fotos não validadas</h2>
   <div class="card_list">
       <% pictures[0].each do |p| %>
@@ -25,17 +30,7 @@
               <% if p.photo.attached? %>
               <image class="image" src="<%=(url_for(p.photo))%>">
               <% end %>
-              <%= form_for p do |t| %>
-                <%= t.hidden_field :is_valid, :value=>true%>
-                <%= t.hidden_field :feedback, :value=>"Certa resposta!" %>
-                <%= t.submit "Validar" %>
-              <% end %>
-              <%= form_for p do |t| %>
-                <%= t.hidden_field :feedback, :value=>"Não era bem essa foto que nós queríamos..." %>
-                <%= t.submit "Invalidar" %>
-              <% end %>
               <%= link_to 'Detalhes', bixe_sends_task_path(p) %>              
-
           </div>
       <% end %>
   </div>

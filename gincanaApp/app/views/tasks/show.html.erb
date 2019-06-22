@@ -1,6 +1,3 @@
-<%= favicon_link_tag %>
-  <p id="notice"><%= notice %></p>
-
   <p class="big"><strong>Tarefa: <%= @task.name %></strong></p>
 
   <div class ="description_wrapper">
@@ -19,9 +16,13 @@
       <% end %>
   </div>
   <% if @task.sendable %>
-    <%= render 'bixe_sends_task_index', task: @task %>
+    <% if current_user.admin == true %>
+      <%= render 'bixe_sends_task_index', task: @task %>
+    <% else %>
+      <%= render 'specific_bixe_sends_task_index', task: @task %>
+    <% end %>
   <% end %>
-  <%= link_to 'Voltar', tasks_path %>
+<%= link_to 'Voltar', root_path %>
 <style>
 .big {
   font-size: 30px;

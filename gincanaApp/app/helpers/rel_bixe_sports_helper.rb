@@ -3,7 +3,11 @@ module RelBixeSportsHelper
         @rel_user_bixe = RelUserBixe.find_by_user_id(current_user.id)
         @bixe = Bixe.find(@rel_user_bixe.bixe_id)
     end
-    
+
+    def redirect_to_sports_control
+        redirect_back(fallback_location: root_path)
+    end
+
     def getBixeSports
         @bixe = getBixe
         

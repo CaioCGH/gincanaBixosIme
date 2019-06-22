@@ -22,4 +22,20 @@ module TasksHelper
         end
         return @valid_pictures, @invalid_pictures
     end
+    def getMyPictures
+        @valid_pictures = []
+        @invalid_pictures = []
+        bixe_sends_tasks = BixeSendsTask.all
+        bixe = getBixeFromSession
+        for picture in bixe_sends_tasks
+            if picture.task_id == @task.id && picture.bixe_id == bixe.id
+                if picture.is_valid
+                    @valid_pictures.append(picture)
+                else
+                    @invalid_pictures.append(picture)
+                end
+            end
+        end
+        return @valid_pictures, @invalid_pictures
+    end
 end
