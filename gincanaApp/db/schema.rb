@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_05_18_184443) do
+ActiveRecord::Schema.define(version: 2019_06_21_200811) do
 
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
@@ -50,13 +50,20 @@ ActiveRecord::Schema.define(version: 2019_05_18_184443) do
   create_table "bixes", force: :cascade do |t|
     t.string "name"
     t.string "telephone"
-    t.string "course"
     t.boolean "tutor"
     t.boolean "is_valid"
+    t.integer "course_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "team_id"
+    t.index ["course_id"], name: "index_bixes_on_course_id"
     t.index ["team_id"], name: "index_bixes_on_team_id"
+  end
+
+  create_table "courses", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "profiles", force: :cascade do |t|

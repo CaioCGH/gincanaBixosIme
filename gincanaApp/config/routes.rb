@@ -3,8 +3,11 @@ Rails.application.routes.draw do
   resources :teams
   devise_for :users
   root 'home#home'
-  get 'select_sport',to: "home#select_sport"
+  get 'select_sports',to: "rel_bixe_sports#select_sports"
+  get 'bixe_sports_index',to: "rel_bixe_sports#bixe_sports_index"
   get 'envios',to: "home#envios"
+
+  put 'mark_sport', to: 'rel_bixe_sports#create_array', as: :mark_sports 
 
   resources :tasks
   resources :sports

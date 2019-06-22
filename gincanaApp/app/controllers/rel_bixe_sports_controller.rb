@@ -10,6 +10,12 @@ class RelBixeSportsController < ApplicationController
     @rel_bixe_sports = RelBixeSport.all
   end
 
+  def bixe_index
+    @rel_user_bixe = RelUserBixe.find_by_user_id(current_user.id)
+    @bixe = Bixe.find(@rel_user_bixe.bixe_id)
+    @rel_bixe_sports = RelBixeSport.where(bixe_id: @bixe.id)
+  end
+
   # GET /rel_bixe_sports/1
   # GET /rel_bixe_sports/1.json
   def show
@@ -43,6 +49,44 @@ class RelBixeSportsController < ApplicationController
     end
   end
 
+  def create_array
+    problem = false
+    bixe_id = params[:bixe_id]
+    relations = RelBixeSport.where(bixe_id: bixe_id)
+    
+    
+    relations.each do |r|
+      puts r
+      RelBixeSport.delete(r.id)
+    end
+    
+    if params[:sport_id] != nil
+      for sport_id in params[:sport_id]
+        
+        @rel_bixe_sport = RelBixeSport.new(bixe_id: params[:bixe_id], sport_id: sport_id)
+        
+        if !@rel_bixe_sport.save
+          problem = true
+          break
+        end
+      end
+    end
+    respond_to do |format|
+      if !problem
+        @rel_bixe_sports = RelBixeSport.where(bixe_id: bixe_id)
+        if params[:sport_id ] != nil
+          format.html { redirect_to bixe_sports_index_url, notice: 'Os esportes foram adicionados com sucesso!' }
+        else
+          format.html { redirect_to bixe_sports_index_url, notice: 'Nenhum esporte foi adicionado!' }
+        end
+      else
+        format.html { render :new }
+        format.json { render json: @rel_bixe_sport.errors, status: :unprocessable_entity }
+      end
+    end
+    
+  end
+  
   # PATCH/PUT /rel_bixe_sports/1
   # PATCH/PUT /rel_bixe_sports/1.json
   def update
@@ -78,3 +122,4 @@ class RelBixeSportsController < ApplicationController
       params.require(:rel_bixe_sport).permit(:bixe_id, :sport_id)
     end
 end
+

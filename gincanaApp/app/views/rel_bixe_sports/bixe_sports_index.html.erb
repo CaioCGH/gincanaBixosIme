@@ -1,0 +1,24 @@
+<h2>Você atualmente selecionou estes esportes:<h2>
+<% @sports = getBixeSports %>
+<% if @sports == [] %>
+    <p class="big">Você ainda não selecionou nenhum esporte! <%= link_to 'clique aqui', select_sports_url %> para selecionar os esportes que pretende participar</p>
+<% else %>
+<div class="card_list">
+    <% for sport in @sports do %>
+        <div class="card">
+            <%= sport.name %>
+        </div>
+    <%end%>
+</div>
+<% end %>
+
+<%= link_to 'Selecionar esportes', select_sports_url %>
+</br>
+<%= link_to 'Voltar', root_url %>
+<style>
+.big{
+    color: darkred;
+    font-size: 150%;
+    line-height: 1.5;
+}
+</style>

@@ -76,3 +76,20 @@
   padding: 1% 1% 1% 1%;
   background-color: #b3cce6;
 }
+
+.card {
+  border: 1px solid black;
+  width: 30%;
+  margin: 1%;
+  background-color: lightblue;
+  padding: 1%;
+  
+}
+.card_list {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  border: 1px solid black;
+  margin: 1%;
+  background-color: #d9e6f2;
+}

@@ -17,7 +17,7 @@ class BixesController < ApplicationController
 
   # GET /bixes/new
   def new
-    @bix = Bixe.new
+    @bixe = Bixe.new
   end
 
   # GET /bixes/1/edit
@@ -50,12 +50,12 @@ class BixesController < ApplicationController
   # PATCH/PUT /bixes/1.json
   def update
     respond_to do |format|
-      if @bix.update(bix_params)
-        format.html { redirect_to @bix, notice: 'Bixe was successfully updated.' }
-        format.json { render :show, status: :ok, location: @bix }
+      if @bixe.update(bix_params)
+        format.html { redirect_to @bixe, notice: 'Bixe was successfully updated.' }
+        format.json { render :show, status: :ok, location: @bixe}
       else
         format.html { render :edit }
-        format.json { render json: @bix.errors, status: :unprocessable_entity }
+        format.json { render json: @bixe.errors, status: :unprocessable_entity }
       end
     end
   end
@@ -63,7 +63,7 @@ class BixesController < ApplicationController
   # DELETE /bixes/1
   # DELETE /bixes/1.json
   def destroy
-    @bix.destroy
+    @bixe.destroy
     respond_to do |format|
       format.html { redirect_to bixes_url, notice: 'Bixe was successfully destroyed.' }
       format.json { head :no_content }
@@ -73,11 +73,13 @@ class BixesController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_bix
-      @bix = Bixe.find(params[:id])
+      @bixe = Bixe.find(params[:id])
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def bix_params
-      params.require(:bixe).permit(:name, :telephone, :course, :tutor, :is_valid, :team_id)
+      puts 'AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA'
+      puts params
+      params.require(:bixe).permit(:name, :telephone, :course, :course_id, :tutor, :is_valid, :team_id)
     end
 end
