@@ -3,7 +3,7 @@ module TasksHelper
         Task.find(bixe_sends_tasks.task_id)
     end
 
-    def getBixe(bixe_sends_tasks)
+    def getBixeFromTask(bixe_sends_tasks)
         Bixe.find(bixe_sends_tasks.bixe_id)
     end
 

@@ -4,12 +4,8 @@ module RelBixeSportsHelper
         @bixe = Bixe.find(@rel_user_bixe.bixe_id)
     end
 
-    def redirect_to_sports_control
-        redirect_back(fallback_location: root_path)
-    end
-
     def getBixeSports
-        @bixe = getBixe
+        @bixe = getBixeFromSession
         
         puts @bixe.id
         relation_list = RelBixeSport.where(bixe_id: @bixe.id)

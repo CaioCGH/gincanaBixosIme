@@ -1,4 +1,4 @@
-<% @bixe = getBixe %>
+<% @bixe = getBixeFromSession %>
 <% @sports = Sport.all %>
 <% @sport_interests_bixe = RelBixeSport.new %>
 <h1>Selecione esportes que tem interesse</h1>
@@ -12,7 +12,6 @@
       </li>
     </ul>
   <% end %>
-  <% @bixe = getBixe %>
   <%= hidden_field_tag :bixe_id, @bixe.id %>
   <%= submit_tag 'Marcar modalidades' %>
 <% end %>
