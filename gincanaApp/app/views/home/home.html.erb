@@ -1,7 +1,7 @@
   <% if @user.admin == true %>
     <h1>Seja bem vinde, admin cujo email é <%= @user.email %>!</h1>
   <% else %>
-    <h1>Seja bem vinde, <%= getBixeFromSession.name %>!</h1>
+    <h1>Seja bem vinde, <%= getNewcomerFromSession.name %> do time <%= getTeamFromSession.name %>!</br> </h1>
   <%end%>
    <div class="tasks_wrapper">
 
@@ -49,13 +49,11 @@
   <% if @user.admin == true %>
   <div class="tasks_wrapper">
     <h2> Painel de Controle </h2>
-    <%= link_to 'Bixes', bixes_path%><br>
-    <%= link_to 'Profiles', profiles_path%><br>
-    <%= link_to 'Serviço', services_path%><br>
-    <%= link_to 'Esporte', sports_path%><br>
-    <%= link_to 'Tarefa', tasks_path%><br>
-    <%= link_to 'Time', teams_path%><br>
-    <%= link_to 'Feedback', bixe_sends_tasks_path%><br>
+    <%= link_to 'Bixes', newcomers_path%><br>
+    <%= link_to 'Esportes', sports_path%><br>
+    <%= link_to 'Tarefas', tasks_path%><br>
+    <%= link_to 'Times', teams_path%><br>
+    <%= link_to 'Feedback', newcomer_sends_tasks_path%><br>
   </div> 
   <% end %>
 

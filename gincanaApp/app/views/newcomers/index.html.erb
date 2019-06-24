@@ -1,0 +1,81 @@
+  
+  <h1>Bixes não validados</h1>
+
+  <table>
+    <thead>
+      <tr>
+        <th>Nome</th>
+        <th>Telefone</th>
+        <th>Curso</th>
+        <th>Tutor?</th>
+        <th>Validado?</th>
+        <th>Time</th>
+        <th colspan="6"></th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <% @not_valid_newcomers.each do |nc| %>
+        <tr>
+          <td><%= nc.name %></td>
+          <td><%= nc.telephone %></td>
+          <td><%= getCourse(nc).alias %></td>
+          <td><%= nc.tutor %></td>
+          <td><%= nc.is_valid %></td>
+          <td><%= getTeam(nc).name %></td>
+          <td><%= link_to 'Detalhes', nc %></td>
+          <td><%= link_to 'Editar', edit_newcomer_path(nc) %></td>
+          <td><%= link_to 'Excluir', nc, method: :delete, data: { confirm: 'Tem certeza?' } %></td>
+          <td>
+            <%= form_for nc do |t| %>
+              <%= t.hidden_field :is_valid, :value=>true%>
+              <%= t.submit "Validar" %>
+            <% end %>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+  <br>
+
+  <h1>Bixes validados</h1>
+
+  <table>
+    <thead>
+      <tr>
+        <th>Nome</th>
+        <th>Telefone</th>
+        <th>Curso</th>
+        <th>Tutor?</th>
+        <th>Validado?</th>
+        <th>Time</th>
+        <th colspan="6"></th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <% @valid_newcomers.each do |nc| %>
+        <tr>
+          <td><%= nc.name %></td>
+          <td><%= nc.telephone %></td>
+          <td><%= getCourse(nc).alias %></td>
+          <td><%= nc.tutor %></td>
+          <td><%= nc.is_valid %></td>
+          <td><%= getTeam(nc).name %></td>
+          <td><%= link_to 'Detalhes', nc %></td>
+          <td><%= link_to 'Editar', edit_newcomer_path(nc) %></td>
+          <td><%= link_to 'Excluir', nc, method: :delete, data: { confirm: 'Tem certeza?' } %></td>
+          <td>
+            <%= form_for nc do |t| %>
+              <%= t.hidden_field :is_valid, :value=>true%>
+              <%= t.submit "Validar" %>
+            <% end %>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+  <br>
+
+  <%= link_to 'Volta', root_path %>
+

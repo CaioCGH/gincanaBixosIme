@@ -1,0 +1,33 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Newcomer Sends Tasks</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Newcomer</th>
+      <th>Task</th>
+      <th>Is valid</th>
+      <th>Score</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @newcomer_sends_tasks.each do |newcomer_sends_task| %>
+      <tr>
+        <td><%= newcomer_sends_task.newcomer_id %></td>
+        <td><%= newcomer_sends_task.task_id %></td>
+        <td><%= newcomer_sends_task.is_valid %></td>
+        <td><%= newcomer_sends_task.score %></td>
+        <td><%= link_to 'Show', newcomer_sends_task %></td>
+        <td><%= link_to 'Edit', edit_newcomer_sends_task_path(newcomer_sends_task) %></td>
+        <td><%= link_to 'Destroy', newcomer_sends_task, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Newcomer Sends Task', new_newcomer_sends_task_path %>

@@ -1,0 +1,18 @@
+<% @newcomer = getNewcomerFromSession %>
+<% @sports = Sport.all %>
+<% @sport_interests_newcomer = SportInterestsNewcomer.new %>
+<h1>Selecione esportes que tem interesse</h1>
+
+<%= form_tag(mark_sports_path, method: :put) do %> 
+  <% for sport in @sports %> 
+    <ul>
+      <li>
+        <%= check_box_tag 'sport_id[]', sport.id %>  
+        <%= sport.name %>   
+      </li>
+    </ul>
+  <% end %>
+  <%= hidden_field_tag :newcomer_id, @newcomer.id %>
+  <%= submit_tag 'Marcar modalidades' %>
+<% end %>
+<%= link_to 'Back', root_path %>

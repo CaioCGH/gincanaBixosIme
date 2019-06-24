@@ -33,91 +33,50 @@ ActiveRecord::Schema.define(version: 2019_06_21_200811) do
     t.index ["key"], name: "index_active_storage_blobs_on_key", unique: true
   end
 
-  create_table "bixe_sends_tasks", force: :cascade do |t|
+  create_table "courses", force: :cascade do |t|
+    t.string "name"
+    t.string "alias"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "newcomer_sends_tasks", force: :cascade do |t|
     t.integer "task_id"
-    t.integer "bixe_id"
+    t.integer "newcomer_id"
     t.integer "index"
     t.boolean "is_valid"
     t.string "feedback"
     t.decimal "score"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["bixe_id"], name: "index_bixe_sends_tasks_on_bixe_id"
-    t.index ["task_id", "bixe_id"], name: "index_bixe_sends_tasks_on_task_id_and_bixe_id"
-    t.index ["task_id"], name: "index_bixe_sends_tasks_on_task_id"
+    t.index ["newcomer_id"], name: "index_newcomer_sends_tasks_on_newcomer_id"
+    t.index ["task_id", "newcomer_id"], name: "index_newcomer_sends_tasks_on_task_id_and_newcomer_id"
+    t.index ["task_id"], name: "index_newcomer_sends_tasks_on_task_id"
   end
 
-  create_table "bixes", force: :cascade do |t|
+  create_table "newcomers", force: :cascade do |t|
     t.string "name"
     t.string "telephone"
     t.boolean "tutor"
     t.boolean "is_valid"
     t.integer "course_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.integer "user_id"
     t.integer "team_id"
-    t.index ["course_id"], name: "index_bixes_on_course_id"
-    t.index ["team_id"], name: "index_bixes_on_team_id"
-  end
-
-  create_table "courses", force: :cascade do |t|
-    t.string "name"
-    t.string "nickname"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["course_id"], name: "index_newcomers_on_course_id"
+    t.index ["team_id"], name: "index_newcomers_on_team_id"
+    t.index ["user_id"], name: "index_newcomers_on_user_id"
   end
 
-  create_table "profiles", force: :cascade do |t|
-    t.string "profile_type"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  create_table "rel_bixe_sports", force: :cascade do |t|
-    t.integer "bixe_id"
+  create_table "sport_interests_newcomers", force: :cascade do |t|
+    t.integer "newcomer_id"
     t.integer "sport_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["bixe_id", "sport_id"], name: "index_rel_bixe_sports_on_bixe_id_and_sport_id", unique: true
-    t.index ["bixe_id"], name: "index_rel_bixe_sports_on_bixe_id"
-    t.index ["sport_id"], name: "index_rel_bixe_sports_on_sport_id"
-  end
-
-  create_table "rel_prof_users", force: :cascade do |t|
-    t.integer "profile_id"
-    t.integer "user_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["profile_id"], name: "index_rel_prof_users_on_profile_id"
-    t.index ["user_id"], name: "index_rel_prof_users_on_user_id"
-    t.index [nil, "user_id"], name: "index_rel_prof_users_on_profile_and_user_id", unique: true
-  end
-
-  create_table "rel_ser_profs", force: :cascade do |t|
-    t.integer "service_id"
-    t.integer "profile_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["profile_id"], name: "index_rel_ser_profs_on_profile_id"
-    t.index ["service_id", "profile_id"], name: "index_rel_ser_profs_on_service_id_and_profile_id", unique: true
-    t.index ["service_id"], name: "index_rel_ser_profs_on_service_id"
-  end
-
-  create_table "rel_user_bixes", force: :cascade do |t|
-    t.integer "user_id"
-    t.integer "bixe_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["bixe_id"], name: "index_rel_user_bixes_on_bixe_id"
-    t.index ["user_id", "bixe_id"], name: "index_rel_user_bixes_on_user_id_and_bixe_id", unique: true
-    t.index ["user_id"], name: "index_rel_user_bixes_on_user_id"
-  end
-
-  create_table "services", force: :cascade do |t|
-    t.string "name"
-    t.string "description"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.index ["newcomer_id", "sport_id"], name: "index_sport_interests_newcomers_on_newcomer_id_and_sport_id", unique: true
+    t.index ["newcomer_id"], name: "index_sport_interests_newcomers_on_newcomer_id"
+    t.index ["sport_id"], name: "index_sport_interests_newcomers_on_sport_id"
   end
 
   create_table "sports", force: :cascade do |t|

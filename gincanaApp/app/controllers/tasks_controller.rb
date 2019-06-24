@@ -13,7 +13,7 @@ class TasksController < ApplicationController
   # GET /tasks/1
   # GET /tasks/1.json
   def show
-    @sent_task = BixeSendsTask.all
+    @sent_task = NewcomerSendsTask.all
   end
 
   # GET /tasks/new

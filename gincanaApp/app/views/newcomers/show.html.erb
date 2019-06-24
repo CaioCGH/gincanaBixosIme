@@ -1,0 +1,35 @@
+<p>
+  <strong>Nome:</strong>
+  <%= @newcomer.name %>
+</p>
+
+<p>
+  <strong>Telefone:</strong>
+  <%= @newcomer.telephone %>
+</p>
+
+<p>
+  <% @course = getCourse(@newcomer) %>
+  <strong>Curso:</strong>
+  <%= @course.alias %>
+</p>
+
+<p>
+  <strong>Tutor:</strong>
+  <%= @newcomer.tutor %>
+</p>
+
+<p>
+  <strong>Validado?:</strong>
+  <%= @newcomer.is_valid %>
+</p>
+
+<p>
+  <strong>Time:</strong>
+  <% if  @newcomer.team_id != nil %>
+    <%= Team.find(@newcomer.team_id).name %>
+  <%end%>
+</p>
+
+<%= link_to 'Editar', edit_newcomer_path(@newcomer) %> |
+<%= link_to 'Volta', newcomers_path %>

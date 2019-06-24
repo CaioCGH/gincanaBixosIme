@@ -21,7 +21,7 @@
           <% if current_user != nil && current_user.admin %>
             <li class="navi_item"><%= link_to "Esportes", sports_path, {:style => 'color: #FFFFFF;', :class => "link"} %></li>
           <% else %>
-            <li class="navi_item"><%= link_to "Esportes", "/bixe_sports_index", {:style => 'color: #FFFFFF;', :class => "link"} %></li>
+            <li class="navi_item"><%= link_to "Esportes", "/newcomer_sports_index", {:style => 'color: #FFFFFF;', :class => "link"} %></li>
           <% end %>
           <li class="navi_item"><%= render 'devise/menu/navibar_registration_items'%></li>
           <li class="navi_item"><%= render 'devise/menu/navibar_login_items'%></li>

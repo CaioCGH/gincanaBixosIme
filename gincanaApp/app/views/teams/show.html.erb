@@ -10,5 +10,36 @@
   <%= @team.score %>
 </p>
 
-<%= link_to 'Edit', edit_team_path(@team) %> |
-<%= link_to 'Back', teams_path %>
+
+<table>
+<thead>
+  <tr>
+    <th>Nome</th>
+    <th>Curso</th>
+    <th>Validado?</th>
+    <th colspan="3"></th>
+  </tr>
+</thead>
+
+<tbody>
+  <% @newcomers = getTeamNewcomers(@team) %>
+  <% @newcomers.each do |nc| %>
+    <tr>
+      <td><%= nc.name %></td>
+      <td><%= getCourse(nc).alias %></td>
+      <td><%= nc.is_valid %></td>
+      <td><%= link_to 'Detalhes', nc %></td>
+      <td>
+        <%= form_for nc do |t| %>
+          <%= t.hidden_field :is_valid, :value=>true%>
+          <%= t.submit "Validar" %>
+        <% end %>
+      </td>
+    </tr>
+  <% end %>
+</tbody>
+</table>
+<br>
+
+<%= link_to 'Editar', edit_team_path(@team) %> |
+<%= link_to 'Voltar', teams_path %>

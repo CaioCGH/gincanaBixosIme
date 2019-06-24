@@ -2,7 +2,7 @@ require 'test_helper'
 
 class BixesControllerTest < ActionDispatch::IntegrationTest
   setup do
-    @bix = bixes(:one)
+    @bix = newcomers(:one)
   end
 
   test "should get index" do
@@ -16,11 +16,11 @@ class BixesControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should create bix" do
-    assert_difference('Bixe.count') do
+    assert_difference('Newcomer.count') do
       post bixes_url, params: { bix: { course: @bix.course, is_valid: @bix.is_valid, name: @bix.name, telephone: @bix.telephone, tutor: @bix.tutor } }
     end
 
-    assert_redirected_to bix_url(Bixe.last)
+    assert_redirected_to bix_url(Newcomer.last)
   end
 
   test "should show bix" do
@@ -39,7 +39,7 @@ class BixesControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should destroy bix" do
-    assert_difference('Bixe.count', -1) do
+    assert_difference('Newcomer.count', -1) do
       delete bix_url(@bix)
     end
 

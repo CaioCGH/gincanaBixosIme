@@ -2,7 +2,7 @@ class CreateCourses < ActiveRecord::Migration[5.2]
   def change
     create_table :courses do |t|
       t.string    :name
-      t.string    :nickname
+      t.string    :alias
 
       t.timestamps
     end

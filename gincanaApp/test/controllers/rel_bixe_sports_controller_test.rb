@@ -1,48 +1,48 @@
 require 'test_helper'
 
-class RelBixeSportsControllerTest < ActionDispatch::IntegrationTest
+class SportInterestsNewcomersControllerTest < ActionDispatch::IntegrationTest
   setup do
-    @rel_bixe_sport = rel_bixe_sports(:one)
+    @sport_interests_newcomer = sport_interests_newcomer(:one)
   end
 
   test "should get index" do
-    get rel_bixe_sports_url
+    get sport_interests_newcomer_url
     assert_response :success
   end
 
   test "should get new" do
-    get new_rel_bixe_sport_url
+    get new_sport_interests_newcomer_url
     assert_response :success
   end
 
-  test "should create rel_bixe_sport" do
-    assert_difference('RelBixeSport.count') do
-      post rel_bixe_sports_url, params: { rel_bixe_sport: {  } }
+  test "should create sport_interests_newcomer" do
+    assert_difference('SportInterestsNewcomer.count') do
+      post sport_interests_newcomer_url, params: { sport_interests_newcomer: {  } }
     end
 
-    assert_redirected_to rel_bixe_sport_url(RelBixeSport.last)
+    assert_redirected_to sport_interests_newcomer_url(SportInterestsNewcomer.last)
   end
 
-  test "should show rel_bixe_sport" do
-    get rel_bixe_sport_url(@rel_bixe_sport)
+  test "should show sport_interests_newcomer" do
+    get sport_interests_newcomer_url(@sport_interests_newcomer)
     assert_response :success
   end
 
   test "should get edit" do
-    get edit_rel_bixe_sport_url(@rel_bixe_sport)
+    get edit_sport_interests_newcomer_url(@sport_interests_newcomer)
     assert_response :success
   end
 
-  test "should update rel_bixe_sport" do
-    patch rel_bixe_sport_url(@rel_bixe_sport), params: { rel_bixe_sport: {  } }
-    assert_redirected_to rel_bixe_sport_url(@rel_bixe_sport)
+  test "should update sport_interests_newcomer" do
+    patch sport_interests_newcomer_url(@sport_interests_newcomer), params: { sport_interests_newcomer: {  } }
+    assert_redirected_to sport_interests_newcomer_url(@sport_interests_newcomer)
   end
 
-  test "should destroy rel_bixe_sport" do
-    assert_difference('RelBixeSport.count', -1) do
-      delete rel_bixe_sport_url(@rel_bixe_sport)
+  test "should destroy sport_interests_newcomer" do
+    assert_difference('SportInterestsNewcomer.count', -1) do
+      delete sport_interests_newcomer_url(@sport_interests_newcomer)
     end
 
-    assert_redirected_to rel_bixe_sports_url
+    assert_redirected_to sport_interests_newcomer_url
   end
 end

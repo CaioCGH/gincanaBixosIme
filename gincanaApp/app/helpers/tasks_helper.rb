@@ -1,17 +1,17 @@
 module TasksHelper
-    def getTask(bixe_sends_tasks)
-        Task.find(bixe_sends_tasks.task_id)
+    def getTask(newcomer_sends_tasks)
+        Task.find(newcomer_sends_tasks.task_id)
     end
 
-    def getBixeFromTask(bixe_sends_tasks)
-        Bixe.find(bixe_sends_tasks.bixe_id)
+    def getBixeFromTask(newcomer_sends_tasks)
+        Newcomer.find(newcomer_sends_tasks.newcomer_id)
     end
 
     def getPictures
         @valid_pictures = []
         @invalid_pictures = []
-        @bixe_sends_tasks = BixeSendsTask.all
-        for picture in @bixe_sends_tasks
+        @newcomer_sends_tasks = NewcomerSendsTask.all
+        for picture in @newcomer_sends_tasks
             if picture.task_id == @task.id
                 if picture.is_valid
                     @valid_pictures.append(picture)
@@ -25,10 +25,10 @@ module TasksHelper
     def getMyPictures
         @valid_pictures = []
         @invalid_pictures = []
-        bixe_sends_tasks = BixeSendsTask.all
-        bixe = getBixeFromSession
-        for picture in bixe_sends_tasks
-            if picture.task_id == @task.id && picture.bixe_id == bixe.id
+        newcomer_sends_tasks = NewcomerSendsTask.all
+        newcomer = getNewcomerFromSession
+        for picture in newcomer_sends_tasks
+            if picture.task_id == @task.id && picture.newcomer_id == newcomer.id
                 if picture.is_valid
                     @valid_pictures.append(picture)
                 else

@@ -1,6 +1,6 @@
 require 'test_helper'
 
-class RelBixeSportTest < ActiveSupport::TestCase
+class SportInterestsNewcomerTest < ActiveSupport::TestCase
   # test "the truth" do
   #   assert true
   # end

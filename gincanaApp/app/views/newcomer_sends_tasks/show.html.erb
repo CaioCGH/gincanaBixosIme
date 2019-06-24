@@ -1,0 +1,53 @@
+<% if current_user.admin == false %>
+  <h2>Vizualize seu envio!</h2>
+  <% end %>
+  
+  <p>
+    <strong>Tarefa:</strong>
+    <%= getTask(@newcomer_sends_task).name %>
+  </p>
+  <p>
+    <strong>Índice:</strong>
+    <%= @newcomer_sends_task.index %>
+  </p>
+  <p>
+    <strong>Foi validado?</strong>
+    <%= valid? %>
+  </p>
+  <p>
+    <strong>Comentário:</strong>
+    <%= @newcomer_sends_task.feedback %>
+  </p>
+  <% if current_user.admin == true %>
+    <%= form_for @newcomer_sends_task do |f| %>
+      <div class="field">
+        <%= f.text_field :feedback %>
+        <%= f.submit "Alterar comentário" %>
+      </div>
+    <% end %>
+  <% end %>
+
+<% if current_user.admin == true %>
+  <p>
+    <strong>Newcomer:</strong>
+    <%= getBixeFromTask(@newcomer_sends_task).name %>
+  </p>
+
+  <p>
+    <strong>Pontuação: </strong>
+    <%= @newcomer_sends_task.score %>
+  </p>
+  <%= form_for @newcomer_sends_task do |f| %>
+    <div class="field">
+      <%= f.text_field :score %>
+      <%= f.submit "Atribuir pontuação" %>
+    </div>
+  <% end%>
+<% end %>
+<% if @newcomer_sends_task.photo.attached? %>
+  <image src="<%=(url_for(@newcomer_sends_task.photo))%>">
+<% end %>
+
+
+<%= link_to 'Edit', edit_newcomer_sends_task_path(@newcomer_sends_task) %> |
+<%= link_to 'Back', task_path(@newcomer_sends_task.task_id) %>

@@ -1,5 +1,5 @@
 class Task < ApplicationRecord
-	has_many :bixe_sends_tasks, dependent: :destroy
+	has_many :newcomer_sends_tasks, dependent: :destroy
 	validates :name, presence: true
 	validates :description, presence: true
 	validates :score_type, presence: true

@@ -1,0 +1,36 @@
+<h1>Editar Bixe</h1>
+
+<%newcomer = @newcomer%>
+<%= form_with(model: @newcomer, local: true) do |form| %>
+    <% if newcomer.errors.any? %>
+      <div id="error_explanation">
+        <h2><%= pluralize(newcomer.errors.count, "error") %> prohibited this bix from being saved:</h2>
+  
+        <ul>
+        <% newcomer.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+        </ul>
+      </div>
+    <% end %>
+  
+    <p class="big">Nome: <%= @newcomer.name %></p>
+    <p class="big">Curso: <%= getCourse(@newcomer).name %></p>
+    <div class="field">
+      <%= form.label "Validar?" %>
+      <%= form.check_box :is_valid %>
+    </div>
+  
+    <div class="field">
+      <%= form.label "Time" %>
+      <% @teams = Team.all %>
+      <%= form.select "team_id",  @teams.collect{|team| [team.name, team.id]}%>
+    </div>
+  
+    <div class="actions">
+      <%= form.submit "Atualizar bixe" %>
+    </div>
+  <% end %>
+
+<%= link_to 'Detalhes', @newcomer %> |
+<%= link_to 'Voltar', newcomers_path %>

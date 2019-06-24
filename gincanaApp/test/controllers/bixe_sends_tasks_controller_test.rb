@@ -1,48 +1,48 @@
 require 'test_helper'
 
-class BixeSendsTasksControllerTest < ActionDispatch::IntegrationTest
+class NewcomerSendsTasksControllerTest < ActionDispatch::IntegrationTest
   setup do
-    @bixe_sends_task = bixe_sends_tasks(:one)
+    @newcomer_sends_task = newcomer_sends_tasks(:one)
   end
 
   test "should get index" do
-    get bixe_sends_tasks_url
+    get newcomer_sends_tasks_url
     assert_response :success
   end
 
   test "should get new" do
-    get new_bixe_sends_task_url
+    get new_newcomer_sends_task_url
     assert_response :success
   end
 
-  test "should create bixe_sends_task" do
-    assert_difference('BixeSendsTask.count') do
-      post bixe_sends_tasks_url, params: { bixe_sends_task: { bixe_id: @bixe_sends_task.bixe_id, integer: @bixe_sends_task.integer, is_valid: @bixe_sends_task.is_valid, score: @bixe_sends_task.score, task_id: @bixe_sends_task.task_id } }
+  test "should create newcomer_sends_task" do
+    assert_difference('NewcomerSendsTask.count') do
+      post newcomer_sends_tasks_url, params: { newcomer_sends_task: { newcomer_id: @newcomer_sends_task.newcomer_id, integer: @newcomer_sends_task.integer, is_valid: @newcomer_sends_task.is_valid, score: @newcomer_sends_task.score, task_id: @newcomer_sends_task.task_id } }
     end
 
-    assert_redirected_to bixe_sends_task_url(BixeSendsTask.last)
+    assert_redirected_to newcomer_sends_task_url(NewcomerSendsTask.last)
   end
 
-  test "should show bixe_sends_task" do
-    get bixe_sends_task_url(@bixe_sends_task)
+  test "should show newcomer_sends_task" do
+    get newcomer_sends_task_url(@newcomer_sends_task)
     assert_response :success
   end
 
   test "should get edit" do
-    get edit_bixe_sends_task_url(@bixe_sends_task)
+    get edit_newcomer_sends_task_url(@newcomer_sends_task)
     assert_response :success
   end
 
-  test "should update bixe_sends_task" do
-    patch bixe_sends_task_url(@bixe_sends_task), params: { bixe_sends_task: { bixe_id: @bixe_sends_task.bixe_id, integer: @bixe_sends_task.integer, is_valid: @bixe_sends_task.is_valid, score: @bixe_sends_task.score, task_id: @bixe_sends_task.task_id } }
-    assert_redirected_to bixe_sends_task_url(@bixe_sends_task)
+  test "should update newcomer_sends_task" do
+    patch newcomer_sends_task_url(@newcomer_sends_task), params: { newcomer_sends_task: { newcomer_id: @newcomer_sends_task.newcomer_id, integer: @newcomer_sends_task.integer, is_valid: @newcomer_sends_task.is_valid, score: @newcomer_sends_task.score, task_id: @newcomer_sends_task.task_id } }
+    assert_redirected_to newcomer_sends_task_url(@newcomer_sends_task)
   end
 
-  test "should destroy bixe_sends_task" do
-    assert_difference('BixeSendsTask.count', -1) do
-      delete bixe_sends_task_url(@bixe_sends_task)
+  test "should destroy newcomer_sends_task" do
+    assert_difference('NewcomerSendsTask.count', -1) do
+      delete newcomer_sends_task_url(@newcomer_sends_task)
     end
 
-    assert_redirected_to bixe_sends_tasks_url
+    assert_redirected_to newcomer_sends_tasks_url
   end
 end

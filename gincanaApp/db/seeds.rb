@@ -9,12 +9,12 @@
 puts 'Seeding Courses!'
 # Cursos
 if Course.last == nil
-    Course.create(name: "Bacharelado em Ciência da Computação", nickname: "BCC")
-    Course.create(name: "Bacharelado em Estatística", nickname: "Stat")
-    Course.create(name: "Bacharelado em Matemática", nickname: "Pura")
-    Course.create(name: "Licenciatura em Matemática", nickname: "Lic")
-    Course.create(name: "Bacharelado em Matemática Aplicada", nickname: "Aplicada")
-    Course.create(name: "Bacharelado em Matemática Aplicada e Computacional", nickname: "BMAC")
+    Course.create(name: "Bacharelado em Ciência da Computação", alias: "BCC")
+    Course.create(name: "Bacharelado em Estatística", alias: "Stat")
+    Course.create(name: "Bacharelado em Matemática", alias: "Pura")
+    Course.create(name: "Licenciatura em Matemática", alias: "Lic")
+    Course.create(name: "Bacharelado em Matemática Aplicada", alias: "Aplicada")
+    Course.create(name: "Bacharelado em Matemática Aplicada e Computacional", alias: "BMAC")
 end
 
 # Tasks
@@ -67,23 +67,17 @@ if User.last == nil
     User.create(email: "roald.dahl@usp.br", password: "bixe123", admin: false)
 end
 
-puts 'Seeding bixes!'
+puts 'Seeding newcomers!'
 # Bixo
-if Bixe.last == nil
-    Bixe.create(name: "NoUSer", telephone: "987654321", course_id: 1, team_id: 1, tutor: true, is_valid: false)
-    Bixe.destroy(1)
-    Bixe.create(name: "William Shatner", telephone: "987654321", course_id: 1, team_id: 1, tutor: true, is_valid: false)
-    Bixe.create(name: "William Shakespeare", telephone: "987654321", course_id: 2, team_id: 2, tutor: true, is_valid: false)
-    Bixe.create(name: "Karl Marx", telephone: "987654321", course_id: 3, team_id: 3, tutor: true, is_valid: false)
-    Bixe.create(name: "Angelina Jolie", telephone: "987654321", course_id: 4, team_id: 4, tutor: false, is_valid: false)
-    Bixe.create(name: "50 Cent", telephone: "987654321", course_id: 5, team_id: 1, tutor: false, is_valid: false)
-    Bixe.create(name: "Roald Dahl", telephone: "987654321", course_id: 6, team_id: 2, tutor: false, is_valid: false)
-    RelUserBixe.create(user_id: 2, bixe_id: 2)
-    RelUserBixe.create(user_id: 3, bixe_id: 3)
-    RelUserBixe.create(user_id: 4, bixe_id: 4)
-    RelUserBixe.create(user_id: 5, bixe_id: 5)
-    RelUserBixe.create(user_id: 6, bixe_id: 6)
-    RelUserBixe.create(user_id: 7, bixe_id: 7)
+if Newcomer.last == nil
+    Newcomer.create(name: "NoUSer",              telephone: "987654321", course_id: 1, team_id: 1, user_id: 1, tutor: true, is_valid: false)
+    Newcomer.destroy(1)
+    Newcomer.create(name: "William Shatner",     telephone: "987654321", course_id: 1, team_id: 1, user_id: 2, tutor: true, is_valid: false)
+    Newcomer.create(name: "William Shakespeare", telephone: "951656515", course_id: 2, team_id: 2, user_id: 3, tutor: true, is_valid: false)
+    Newcomer.create(name: "Karl Marx",           telephone: "961649495", course_id: 3, team_id: 3, user_id: 4, tutor: true, is_valid: false)
+    Newcomer.create(name: "Angelina Jolie",      telephone: "965115615", course_id: 4, team_id: 4, user_id: 5, tutor: false, is_valid: false)
+    Newcomer.create(name: "50 Cent",             telephone: "912312312", course_id: 5, team_id: 1, user_id: 6, tutor: false, is_valid: false)
+    Newcomer.create(name: "Roald Dahl",          telephone: "945956231", course_id: 6, team_id: 2, user_id: 7, tutor: false, is_valid: false)
 end
 puts 'Seeding sports!'
 # Esportes
@@ -92,27 +86,27 @@ if Sport.last == nil
     Sport.create(name: "Mahjong")
     Sport.create(name: "Vôlei")
     Sport.create(name: "Ultimate")
-    RelBixeSport.create(bixe_id: 2, sport_id: 1)
-    RelBixeSport.create(bixe_id: 2, sport_id: 2)
-    RelBixeSport.create(bixe_id: 2, sport_id: 3)
+    SportInterestsNewcomer.create(newcomer_id: 2, sport_id: 1)
+    SportInterestsNewcomer.create(newcomer_id: 2, sport_id: 2)
+    SportInterestsNewcomer.create(newcomer_id: 2, sport_id: 3)
 end
-if BixeSendsTask.last == nil
-    ust = BixeSendsTask.new(bixe_id: 2, task_id: 3, index: 1)
+if NewcomerSendsTask.last == nil
+    ust = NewcomerSendsTask.new(newcomer_id: 2, task_id: 3, index: 1)
     ust.photo.attach(io: File.open("#{Dir.pwd}/app/assets/images/seeds/ime.jpeg"), filename: 'ime.jpeg')
     ust.save
-    ust = BixeSendsTask.new(bixe_id: 2, task_id: 3, index: 2)
+    ust = NewcomerSendsTask.new(newcomer_id: 2, task_id: 3, index: 2)
     ust.photo.attach(io: File.open("#{Dir.pwd}/app/assets/images/seeds/pracaDoRelogio.jpeg"), filename: 'pracaDoRelogio.jpeg')
     ust.save
-    ust = BixeSendsTask.new(bixe_id: 2, task_id: 3, index: 3)
+    ust = NewcomerSendsTask.new(newcomer_id: 2, task_id: 3, index: 3)
     ust.photo.attach(io: File.open("#{Dir.pwd}/app/assets/images/seeds/reitoria.jpg"), filename: 'reitoria.jpg')
     ust.save
-    ust = BixeSendsTask.new(bixe_id: 2, task_id: 3, index: 4)
+    ust = NewcomerSendsTask.new(newcomer_id: 2, task_id: 3, index: 4)
     ust.photo.attach(io: File.open("#{Dir.pwd}/app/assets/images/seeds/io.jpg"), filename: 'io.jpg')
     ust.save
-    ust = BixeSendsTask.new(bixe_id: 2, task_id: 3, index: 5)
+    ust = NewcomerSendsTask.new(newcomer_id: 2, task_id: 3, index: 5)
     ust.photo.attach(io: File.open("#{Dir.pwd}/app/assets/images/seeds/fau.jpeg"), filename: 'fau.jpeg')
     ust.save
-    ust = BixeSendsTask.new(bixe_id: 3, task_id: 3, index: 1)
+    ust = NewcomerSendsTask.new(newcomer_id: 3, task_id: 3, index: 1)
     ust.photo.attach(io: File.open("#{Dir.pwd}/app/assets/images/seeds/pelletron.jpg"), filename: 'pelletron.jpg')
     ust.save
     

@@ -17,9 +17,9 @@
   </div>
   <% if @task.sendable %>
     <% if current_user.admin == true %>
-      <%= render 'bixe_sends_task_index', task: @task %>
+      <%= render 'newcomer_sends_task_index', task: @task %>
     <% else %>
-      <%= render 'specific_bixe_sends_task_index', task: @task %>
+      <%= render 'specific_newcomer_sends_task_index', task: @task %>
     <% end %>
   <% end %>
 <%= link_to 'Voltar', root_path %>
