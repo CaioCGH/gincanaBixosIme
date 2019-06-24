@@ -2,7 +2,7 @@
 
 <% @newcomer_sends_task = NewcomerSendsTask.new %>
 
-<%= render 'form', newcomer_sends_task: @newcomer_sends_task%>
+<%= render 'form', newcomer_sends_task: @newcomer_sends_task, task: @task%>
 
 <h2>Fotos não validadas</h2>
   <div class="card_list">
