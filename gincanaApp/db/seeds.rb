@@ -10,7 +10,7 @@ puts 'Seeding Courses!'
 # Cursos
 if Course.last == nil
     Course.create(name: "Bacharelado em Ciência da Computação", alias: "BCC")
-    Course.create(name: "Bacharelado em Estatística", alias: "Stat")
+    Course.create(name: "Bacharelado em Estatística", alias: "Estat")
     Course.create(name: "Bacharelado em Matemática", alias: "Pura")
     Course.create(name: "Licenciatura em Matemática", alias: "Lic")
     Course.create(name: "Bacharelado em Matemática Aplicada", alias: "Aplicada")
@@ -109,7 +109,7 @@ if NewcomerSendsTask.last == nil
     ust = NewcomerSendsTask.new(newcomer_id: 3, task_id: 3, index: 1)
     ust.photo.attach(io: File.open("#{Dir.pwd}/app/assets/images/seeds/pelletron.jpg"), filename: 'pelletron.jpg')
     ust.save
-    
+
 end
 
 
