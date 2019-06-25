@@ -23,6 +23,7 @@
     <% end %>
   <% end %>
 <%= link_to 'Voltar', root_path %>
+<%= link_to 'Atribuir pontuação', scoring_tasks_path(controller: "task", action: "scoring",task_id: @task.id) %>
 <style>
 .big {
   font-size: 30px;

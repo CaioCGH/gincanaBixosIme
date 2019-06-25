@@ -1,0 +1,56 @@
+<p class="big"><strong>Tarefa: <%= @task.name %></strong></p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Nome</th>
+      <th>Pontuação</th>
+      <th colspan="2"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+  <td><%= form_tag(attribute_score_path, method: :put) do %></td>
+    <% @teams.each do |team| %>
+      <tr>
+        <td><%= team.name %></td>
+        <td><%= team.score %></td>   
+        <td><%= text_field_tag 'attributed_score[]', "" %> </td>   
+        <%= hidden_field_tag 'team_id[]', team.id %> 
+        <td><%= link_to 'Detalhes', team %></td>
+      <tr>
+    <% end %>
+  </tbody>
+</table>
+<%= hidden_field_tag :task_id, @task.id %>
+<%= submit_tag 'atribuir pontos' %>
+<% end %>
+<%= link_to 'Voltar', tasks_path %>
+<style>
+.big {
+font-size: 30px;
+font-color: "red";
+}
+
+.status_wrapper {
+font-size: 100%;
+}
+
+.image {
+max-height: 100%;
+max-width: 100%;
+}
+
+.test{
+width: 200px;
+height: 200px;
+}
+.index{
+font-size: 150%;
+}
+
+.description_wrapper{
+font-size: 150%;
+line-height: normal;
+}
+</style>

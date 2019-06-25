@@ -16,6 +16,11 @@ class TasksController < ApplicationController
     @sent_task = NewcomerSendsTask.all
   end
 
+  def scoring
+    @task = Task.find(params[:task_id])
+    @teams = Team.all
+  end
+
   # GET /tasks/new
   def new
     @task = Task.new
@@ -23,6 +28,39 @@ class TasksController < ApplicationController
 
   # GET /tasks/1/edit
   def edit
+  end
+
+  def score_each_team
+    problem = false
+    task_id = params[:task_id]
+    task = Task.find(task_id)
+    list_of_team_ids = params[:team_id]
+    list_of_gain_points = params[:team_id]
+    teams_to_save = []
+    for i in 0..list_of_team_ids.length - 1
+      puts i
+      puts list_of_team_ids[i]
+      team = Team.find(list_of_team_ids[i])
+      team.score = team.score + list_of_gain_points[i].to_i
+      teams_to_save.append(team)
+      if !team.valid?
+        problem = true
+        break
+      end
+    end
+    
+    respond_to do |format|
+      if !problem
+        for team in teams_to_save do
+          team.save
+        end
+        format.html { redirect_to task, notice: 'Pontuações atualizadas!.' }
+        format.json { render :show, status: :created, location: @task }
+      else
+        format.html { redirect_to task, notice: 'Houve erro nas pontuações!.' }
+        format.json { render json: @task.errors, status: :unprocessable_entity }
+      end
+    end
   end
 
   # POST /tasks

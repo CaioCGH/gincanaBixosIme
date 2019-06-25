@@ -14,8 +14,4 @@ class HomeController < ApplicationController
     @relsport = SportInterestsNewcomer.new
   end
 
-  def envios
-    @sport_interests_newcomer = SportInterestsNewcomer.all
-  end
-
 end

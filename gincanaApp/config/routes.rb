@@ -5,14 +5,17 @@ Rails.application.routes.draw do
   root 'home#home'
   get 'select_sports',to: "sport_interests_newcomer#select_sports"
   get 'newcomer_sports_index',to: "sport_interests_newcomer#newcomer_sports_index"
-  get 'envios',to: "home#envios"
 
   put 'mark_sport', to: 'sport_interests_newcomer#create_array', as: :mark_sports 
+  put 'attribute_score', to: 'tasks#score_each_team', as: :attribute_score 
 
-  resources :tasks
+  resources :tasks do
+    collection do
+      get :scoring
+    end
+  end
+
   resources :sports
-  resources :services
-  resources :profiles
   resources :newcomers
   resources :newcomer_sends_tasks
   resources :sport_interests_newcomer
