@@ -84,12 +84,11 @@
 <script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
 <script type="text/javascript">
 
-window.onload = function () {
+document.addEventListener("turbolinks:load", function() {
   var teamsData = [];
   console.log(teamsData);
   teams = gon.teams
   for (i in teams){
-    console.log(teams[i].name);
     teamsData.push({ label: teams[i].name, y: teams[i].score});
   }
   console.log(teamsData);
@@ -121,7 +120,7 @@ window.onload = function () {
 			dataPoints: teamsData
 		}
 		]
-	});
+  });
 	chart.render();
-}
+})
 </script>
