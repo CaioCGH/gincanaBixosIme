@@ -5,7 +5,7 @@ class HomeController < ApplicationController
     @teams = Team.all
 
     if !@user.admin && Newcomer.find_by_user_id(@user.id) == nil then
-      redirect_to new_bix_path
+      redirect_to new_newcomer_path
     end
   end
 

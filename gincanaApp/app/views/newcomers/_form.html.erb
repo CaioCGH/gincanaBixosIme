@@ -1,4 +1,4 @@
-<%= form_with(model: newcomer, local: true) do |form| %>
+<%= form_with(model: newcomer, local: true, class: "newcomer_form") do |form| %>
   <% if newcomer.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(newcomer.errors.count, "error") %> prohibited this bix from being saved:</h2>
@@ -20,7 +20,7 @@
     <%= form.label "Telefone" %>
     <%= form.text_field :telephone %>
   </div>
-    
+
   <div class="field">
     <%= form.label "Curso" %>
     <% @courses = Course.all %>
@@ -29,7 +29,7 @@
 
 
   <div class="field">
-    <%= form.label "Gostaria de ter um veterano tutor" %> 
+    <%= form.label "Gostaria de ter um veterano tutor" %>
     <%= form.check_box :tutor %>
   </div>
 

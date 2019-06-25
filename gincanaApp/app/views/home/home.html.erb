@@ -1,7 +1,10 @@
   <% if @user.admin == true %>
     <h1>Seja bem vinde, admin cujo email é <%= @user.email %>!</h1>
-  <% else %>
+  <% else if getTeamFromSession == nil%>
+    <h1>Seja bem vinde, <%= getNewcomerFromSession.name %>!</br> </h1>
+ <% else %>
     <h1>Seja bem vinde, <%= getNewcomerFromSession.name %> do time <%= getTeamFromSession.name %>!</br> </h1>
+  <%end%>
   <%end%>
    <div class="tasks_wrapper">
 
@@ -54,7 +57,7 @@
     <%= link_to 'Tarefas', tasks_path%><br>
     <%= link_to 'Times', teams_path%><br>
     <%= link_to 'Feedback', newcomer_sends_tasks_path%><br>
-  </div> 
+  </div>
   <% end %>
 
   <%= yield %>

@@ -37,8 +37,7 @@ class NewcomersController < ApplicationController
   # POST /newcomers.json
   def create
     @newcomer = Newcomer.new(newcomer_params)
-    newcomer_id = Newcomer.last.id + 1 
-    @newcomer.team_id = newcomer_id%Team.count
+    newcomer_id = Newcomer.last.id + 1
     @newcomer.is_valid = false
     @newcomer.user_id = current_user.id
 
