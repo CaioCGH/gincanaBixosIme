@@ -49,10 +49,10 @@ end
 puts 'Seeding teams!'
 # Times
 if Team.last == nil
-    Team.create(name: "Amarelo", score: 0)
-    Team.create(name: "Azul", score: 0)
-    Team.create(name: "Verde", score: 0)
-    Team.create(name: "Vermelho", score: 0)
+    Team.create(name: "Amarelo", score: 999)
+    Team.create(name: "Azul", score: 696)
+    Team.create(name: "Verde", score: 420)
+    Team.create(name: "Vermelho", score: 1337)
 end
 
 puts 'Seeding users!'
