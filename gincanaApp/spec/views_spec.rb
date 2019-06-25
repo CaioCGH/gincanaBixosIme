@@ -1,8 +1,8 @@
 require 'rails_helper'
 
-RSpec.describe "Em sign up" do
-    context "tentar cadastrar um Bixo" do
-        it "e ser válido" do
+RSpec.describe "Em sign in" do
+    context "tentar logar como admin" do
+        it "e conseguir" do
             User.create(email: "adm@adm", password: "admins", admin: true)
             visit '/users/sign_in'
             fill_in 'user_email', :with => 'adm@adm'
