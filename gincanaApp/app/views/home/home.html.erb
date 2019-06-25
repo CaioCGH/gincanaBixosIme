@@ -6,6 +6,7 @@
     <h1>Seja bem vinde, <%= getNewcomerFromSession.name %> do time <%= getTeamFromSession.name %>!</br> </h1>
   <%end%>
   <%end%>
+  
    <div class="tasks_wrapper">
 
     <h2>Tarefas:</h2>
@@ -29,7 +30,9 @@
   </div>
 
   <div class="tasks_wrapper">
+          
     <h2>Times</h2>
+    <div class="teams_wrapper">
     <table>
       <thead>
         <tr>
@@ -47,6 +50,8 @@
         <% end %>
       </tbody>
     </table>
+    <div id="chartContainer" style="max-height: 120%; width: 50%;"></div>
+  </div>
   </div>
 
   <% if @user.admin == true %>
@@ -69,4 +74,54 @@
   padding: 1% 1% 1% 1%;
   background-color: #c6d9ec;
 }
+.teams_wrapper {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
 </style>
+<script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
+<script type="text/javascript">
+
+window.onload = function () {
+  var teamsData = [];
+  console.log(teamsData);
+  teams = gon.teams
+  for (i in teams){
+    console.log(teams[i].name);
+    teamsData.push({ label: teams[i].name, y: teams[i].score});
+  }
+  console.log(teamsData);
+  CanvasJS.addColorSet("greenShades",
+                [//colorSet Array
+
+                "yellow",
+                "blue",
+                "green",
+                "red",                
+                ]);
+	var chart = new CanvasJS.Chart("chartContainer", {
+    backgroundColor: '#c6d9ec',
+    colorSet: "greenShades",
+    axisY:{
+      gridThickness: 0,
+      tickLength: 0,
+      lineThickness: 0,
+      labelFormatter: function(){
+        return " ";
+      }
+    },
+		title:{
+			text: ""              
+		},
+		data: [
+		{
+			type: "column",
+			dataPoints: teamsData
+		}
+		]
+	});
+	chart.render();
+}
+</script>

@@ -3,6 +3,7 @@ class HomeController < ApplicationController
     @tasks = Task.all
     @user = current_user
     @teams = Team.all
+    gon.teams = @teams
 
     if !@user.admin && Newcomer.find_by_user_id(@user.id) == nil then
       redirect_to new_newcomer_path

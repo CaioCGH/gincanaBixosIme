@@ -31,12 +31,14 @@ class TasksController < ApplicationController
   end
 
   def score_each_team
+    puts params
     problem = false
     task_id = params[:task_id]
     task = Task.find(task_id)
     list_of_team_ids = params[:team_id]
-    list_of_gain_points = params[:team_id]
+    list_of_gain_points = params[:attributed_score]
     teams_to_save = []
+
     for i in 0..list_of_team_ids.length - 1
       puts i
       puts list_of_team_ids[i]
@@ -48,7 +50,6 @@ class TasksController < ApplicationController
         break
       end
     end
-    
     respond_to do |format|
       if !problem
         for team in teams_to_save do

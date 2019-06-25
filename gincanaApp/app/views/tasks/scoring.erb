@@ -1,5 +1,5 @@
 <p class="big"><strong>Tarefa: <%= @task.name %></strong></p>
-
+<%= form_tag(attribute_score_path, method: :put) do %>
 <table>
   <thead>
     <tr>
@@ -9,22 +9,22 @@
     </tr>
   </thead>
 
-  <tbody>
-  <td><%= form_tag(attribute_score_path, method: :put) do %></td>
-    <% @teams.each do |team| %>
-      <tr>
-        <td><%= team.name %></td>
-        <td><%= team.score %></td>   
-        <td><%= text_field_tag 'attributed_score[]', "" %> </td>   
-        <%= hidden_field_tag 'team_id[]', team.id %> 
-        <td><%= link_to 'Detalhes', team %></td>
-      <tr>
-    <% end %>
-  </tbody>
-</table>
-<%= hidden_field_tag :task_id, @task.id %>
-<%= submit_tag 'atribuir pontos' %>
+    <tbody>
+      <% @teams.each do |team| %>
+        <tr>
+          <td><%= team.name %></td>
+          <td><%= team.score %></td>   
+          <td><%= text_field_tag 'attributed_score[]', "" %> </td>   
+          <%= hidden_field_tag 'team_id[]', team.id %> 
+          <td><%= link_to 'Detalhes', team %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+  <%= hidden_field_tag :task_id, @task.id %>
+  <%= submit_tag 'atribuir pontos' %>
 <% end %>
+
 <%= link_to 'Voltar', tasks_path %>
 <style>
 .big {
