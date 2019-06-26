@@ -47,7 +47,8 @@
 <% if @newcomer_sends_task.photo.attached? %>
   <image src="<%=(url_for(@newcomer_sends_task.photo))%>">
 <% end %>
+<% if current_user.admin == false %>
 
-
-<%= link_to 'Edit', edit_newcomer_sends_task_path(@newcomer_sends_task) %> |
+  <%= link_to 'Editar', edit_newcomer_sends_task_path(@newcomer_sends_task) %>
+<% end %>
 <%= link_to 'Voltar', task_path(@newcomer_sends_task.task_id) %>

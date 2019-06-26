@@ -1,6 +1,33 @@
-<h1>Editing Newcomer Sends Task</h1>
+<h1>Editando envio para a prova</h1>
+  
+<% newcomer_sends_task = @newcomer_sends_task %>
+<%= form_with(model: newcomer_sends_task, local: true) do |form| %>
+    <% if newcomer_sends_task.errors.any? %>
+      <div id="error_explanation">
+        <h2><%= pluralize(newcomer_sends_task.errors.count, "error") %> prohibited this newcomer_sends_task from being saved:</h2>
 
-<%= render 'form', newcomer_sends_task: @newcomer_sends_task %>
+        <ul>
+        <% newcomer_sends_task.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+        </ul>
+      </div>
+    <% end %>
+
+    <h1>Mande o arquivo para a prova!</h1>
+
+    <%= form.hidden_field :task_id, :value=>@newcomer_sends_task.task_id %>
+
+    <%= form.label "Índice" %>
+    <%= form.text_field :index %><br>
+
+    <%= form.label "Foto da prova" %>
+    <%= form.file_field :photo %><br>
+
+    <div class="actions">
+      <%= form.submit %>
+    </div>
+  <% end %>
 
 <%= link_to 'Show', @newcomer_sends_task %> |
 <%= link_to 'Voltar', newcomer_sends_tasks_path %>

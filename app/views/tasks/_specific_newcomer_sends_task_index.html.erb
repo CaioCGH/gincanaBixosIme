@@ -16,6 +16,7 @@
               <image class="image" src="<%=(url_for(p.photo))%>">
               <% end %>
               <%= link_to 'Detalhes', newcomer_sends_task_path(p) %>              
+              <%= link_to 'Excluir', newcomer_sends_task_path(p), method: :delete %>              
           </div>
       <% end %>
   </div>
@@ -30,7 +31,8 @@
               <% if p.photo.attached? %>
               <image class="image" src="<%=(url_for(p.photo))%>">
               <% end %>
-              <%= link_to 'Detalhes', newcomer_sends_task_path(p) %>              
+              <%= link_to 'Detalhes', newcomer_sends_task_path(p) %>   
+              <%= link_to 'Excluir', newcomer_sends_task_path(p), method: :delete %>             
           </div>
       <% end %>
   </div>
