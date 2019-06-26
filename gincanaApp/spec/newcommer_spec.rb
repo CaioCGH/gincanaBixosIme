@@ -33,7 +33,8 @@ RSpec.describe "Em Bixe" do
     		newcomer = Newcomer.create(name: "Euclides", telephone: "961649495", course_id: course.id, team_id: nil, user_id: user.id, tutor: false, is_valid: true)
     		newcomer.update(team_id: team.id)
     		expect(newcomer.team_id).to eq(team.id)
-    end
+    	end
+	end
 	context "tentar destruir" do
     	it "bixe e conseguir" do
     		user = User.create(email: "angelina.jolie@usp.br", password: "bixe123", admin: false)
