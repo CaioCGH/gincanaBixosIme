@@ -78,12 +78,27 @@ class NewcomersController < ApplicationController
   end
 
   def validate_newcomer
+    
     newcomer_id = params[:newcomer_id]
     newcomer = Newcomer.find(newcomer_id)
-    newcomer.team_id = newcomer.id%Team.count
+    newcomer.team_id = newcomer.id%Team.count+1
+    puts "AAAAAAAAAAAAAAAAA"
+    puts newcomer.team_id
     newcomer.is_valid = true
-    newcomer.save
+    a = newcomer.save
+    respond_to do |format|
+      format.html { redirect_to newcomers_url, notice: 'Bixe foi validado com sucesso.' }
+      format.json { head :no_content }
+    end
+  end
 
+  def invalidate_newcomer
+    newcomer_id = params[:newcomer_id]
+    newcomer = Newcomer.find(newcomer_id)
+    newcomer.is_valid = false
+    a = newcomer.save
+    puts "AAAAAAAAAAAAAAAAA"
+    puts a
     respond_to do |format|
       format.html { redirect_to newcomers_url, notice: 'Bixe foi validado com sucesso.' }
       format.json { head :no_content }
