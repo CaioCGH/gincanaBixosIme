@@ -11,5 +11,6 @@ module NewcomerHelper
             return @team = Team.find(newcomer.team_id)
         else
             return nil
+        end
     end
 end
