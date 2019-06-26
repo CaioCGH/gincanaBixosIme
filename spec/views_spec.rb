@@ -16,6 +16,7 @@ end
 RSpec.describe "Em sign up" do
    context "tentar criar usuario e bixe" do
        it "e conseguir" do
+           Course.create(name: "Bacharelado em Estatística", alias: "Estat")
            visit '/users/sign_up'
            fill_in 'user_email', :with => 'caina@usp.br'
            fill_in 'user_password', :with => 'caina123'
@@ -25,22 +26,22 @@ RSpec.describe "Em sign up" do
            fill_in 'newcomer_name', :with => 'Cainã Setti'
            fill_in 'newcomer_telephone', :with => '938121210'
            select "Bacharelado em Estatística", :from => "newcomer_course_id"
-           #select 'Bacharelado em Estatística', :from => 'newcomer[course_id]'
            check 'newcomer_tutor'
            click_button 'Cadastrar bixe'
            expect(Newcomer.find_by_name('Cainã Setti').telephone).to eq("938121210")
        end
+        it "e ir para página inicial" do
+            Course.create(name: "Bacharelado em Estatística", alias: "Estat")
+            visit '/users/sign_up'
+            fill_in 'user_email', :with => 'caina.setti@usp.br'
+            fill_in 'user_password', :with => 'caina123'
+            click_button 'Sign up'
+            fill_in 'Nome Completo', :with => 'Cainã Setti Galante'
+            fill_in 'Telefone', :with => '938121211'
+            select 'Bacharelado em Ciência da Computação', :from => 'Curso'
+            check 'Gostaria de ter um veterano tutor'
+            click_button 'Cadastrar bixe'
+            expect(page).to have_content 'Seja bem vinde'
+        end
    end
 end
-       # it "e ir para página inicial" do
-       #     visit '/users/sign_up'
-       #     fill_in 'user_email', :with => 'caina.setti@usp.br'
-       #     fill_in 'user_password', :with => 'caina123'
-       #     click_button 'Sign up'
-       #     fill_in 'Nome Completo', :with => 'Cainã Setti Galante'
-       #     fill_in 'Telefone', :with => '938121211'
-       #     select 'Bacharelado em Ciência da Computação', :from => 'Curso'
-       #     check 'Gostaria de ter um veterano tutor'
-       #     click_button 'Cadastrar bixe'
-       #     expect(page).to have_content 'Seja bem vinde'
-       # end

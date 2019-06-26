@@ -27,7 +27,6 @@ RSpec.describe "Em Esporte" do
     		expect(task.description).to eq("Virá fantasiado todos os dias")
     	end
     end
-
     context "tentar deletar" do
     	it "e conseguir" do
     		task = Task.create(name: "Fotos da USP", description: "Mande fotos de vários lugares da USP!", score_type: "Cada foto validada soma 50 pontos",have_score: true, group: false, sendable: true, max_send: 50, have_feedback: true)

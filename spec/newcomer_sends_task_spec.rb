@@ -42,10 +42,10 @@ RSpec.describe "Em Envios" do
             course = Course.create(name: "Bacharelado em Estatística", alias: "Estat")
             newcomer = Newcomer.create(name: "William Shattner", telephone: "987654321", course_id: course.id, team_id: nil, user_id: user.id, tutor: true, is_valid: false)
             task = Task.create(name: "Problemas", description: "Resolva os Problemas", score_type: "Cada Problema correto vale 200 pontos",have_score: false, group: false, sendable: true, max_send: 10, have_feedback: true)
-            qnt = NewcomerSendsTask.count
             nst = NewcomerSendsTask.new(newcomer_id: newcomer.id, task_id: task.id, index: 1)
             nst.photo.attach(io: File.open("#{Dir.pwd}/app/assets/images/seeds/ime.jpeg"), filename: 'ime.jpeg')
             nst.save
+            qnt = NewcomerSendsTask.count
             NewcomerSendsTask.destroy(nst.id)
             expect(NewcomerSendsTask.count).to eq(qnt - 1)
         end
@@ -55,9 +55,9 @@ RSpec.describe "Em Envios" do
             course = Course.create(name: "Bacharelado em Matemática", alias: "Pura")
             newcomer = Newcomer.create(name: "Caio Hirakawa", telephone: "987654321", course_id: course.id, team_id: nil, user_id: user.id, tutor: true, is_valid: false)
             task = Task.create(name: "Caça ao Tesouro", description: "Brincadeira feita presencialmente", score_type: "1000 pro 1o, 8000 pro 2o, 600 pro 3o, 400 pro 4o",have_score: true, group: true, sendable: false, max_send: 1, have_feedback: true)
-            qnt = NewcomerSendsTask.count
             nst = NewcomerSendsTask.new(newcomer_id: newcomer.id, task_id: task.id, index: 1)
             nst.save
+            qnt = NewcomerSendsTask.count
             Task.destroy(task.id)
             expect(NewcomerSendsTask.count).to eq(qnt - 1)
         end
@@ -67,10 +67,10 @@ RSpec.describe "Em Envios" do
             course = Course.create(name: "Licenciatura em Matemática", alias: "Lic")
             newcomer = Newcomer.create(name: "Victor Batistella", telephone: "987654321", course_id: course.id, team_id: nil, user_id: user.id, tutor: true, is_valid: false)
             task = Task.create(name: "Exame", description: "Fazer Exame Demartológico", score_type: "500 pontos se passar, 1000 se não",have_score: false, group: false, sendable: true, max_send: 1, have_feedback: true)
-            qnt = NewcomerSendsTask.count
             nst = NewcomerSendsTask.new(newcomer_id: newcomer.id, task_id: task.id, index: 1)
             nst.photo.attach(io: File.open("#{Dir.pwd}/app/assets/images/seeds/ime.jpeg"), filename: 'ime.jpeg')
             nst.save
+            qnt = NewcomerSendsTask.count
             Newcomer.destroy(newcomer.id)
             expect(NewcomerSendsTask.count).to eq(qnt - 1)
         end
