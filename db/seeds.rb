@@ -72,12 +72,12 @@ puts 'Seeding newcomers!'
 if Newcomer.last == nil
     Newcomer.create(name: "NoUSer",              telephone: "987654321", course_id: 1, team_id: 1, user_id: 1, tutor: true, is_valid: false)
     Newcomer.destroy(1)
-    Newcomer.create(name: "William Shatner",     telephone: "987654321", course_id: 1, team_id: 1, user_id: 2, tutor: true, is_valid: false)
-    Newcomer.create(name: "William Shakespeare", telephone: "951656515", course_id: 2, team_id: 2, user_id: 3, tutor: true, is_valid: false)
-    Newcomer.create(name: "Karl Marx",           telephone: "961649495", course_id: 3, team_id: 3, user_id: 4, tutor: true, is_valid: false)
-    Newcomer.create(name: "Angelina Jolie",      telephone: "965115615", course_id: 4, team_id: 4, user_id: 5, tutor: false, is_valid: false)
-    Newcomer.create(name: "50 Cent",             telephone: "912312312", course_id: 5, team_id: 1, user_id: 6, tutor: false, is_valid: false)
-    Newcomer.create(name: "Roald Dahl",          telephone: "945956231", course_id: 6, team_id: 2, user_id: 7, tutor: false, is_valid: false)
+    Newcomer.create(name: "William Shatner",     telephone: "987654321", course_id: 1, team_id: 1, user_id: 2, tutor: true, is_valid: true)
+    Newcomer.create(name: "William Shakespeare", telephone: "951656515", course_id: 2, team_id: 2, user_id: 3, tutor: true, is_valid: true)
+    Newcomer.create(name: "Karl Marx",           telephone: "961649495", course_id: 3, team_id: 3, user_id: 4, tutor: true, is_valid: true)
+    Newcomer.create(name: "Angelina Jolie",      telephone: "965115615", course_id: 4, team_id: nil, user_id: 5, tutor: false, is_valid: false)
+    Newcomer.create(name: "50 Cent",             telephone: "912312312", course_id: 5, team_id: nil, user_id: 6, tutor: false, is_valid: false)
+    Newcomer.create(name: "Roald Dahl",          telephone: "945956231", course_id: 6, team_id: nil, user_id: 7, tutor: false, is_valid: false)
 end
 puts 'Seeding sports!'
 # Esportes

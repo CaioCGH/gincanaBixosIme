@@ -9,7 +9,6 @@
         <th>Curso</th>
         <th>Tutor?</th>
         <th>Validado?</th>
-        <th>Time</th>
         <th colspan="6"></th>
       </tr>
     </thead>
@@ -22,14 +21,13 @@
           <td><%= getCourse(nc).alias %></td>
           <td><%= nc.tutor %></td>
           <td><%= nc.is_valid %></td>
-          <td><%= getTeam(nc).name %></td>
           <td><%= link_to 'Detalhes', nc %></td>
           <td><%= link_to 'Editar', edit_newcomer_path(nc) %></td>
           <td><%= link_to 'Excluir', nc, method: :delete, data: { confirm: 'Tem certeza?' } %></td>
           <td>
-            <%= form_for nc do |t| %>
-              <%= t.hidden_field :is_valid, :value=>true%>
-              <%= t.submit "Validar" %>
+            <%= form_tag(validate_newcomer_path, method: :put) do %>
+              <%= hidden_field_tag :newcomer_id, nc.id %>
+              <%= submit_tag 'Validar' %>
             <% end %>
           </td>
         </tr>

@@ -72,7 +72,20 @@ class NewcomersController < ApplicationController
   def destroy
     @newcomer.destroy
     respond_to do |format|
-      format.html { redirect_to bixes_url, notice: 'Bixe foi excluido com sucesso.' }
+      format.html { redirect_to newcomers_url, notice: 'Bixe foi excluido com sucesso.' }
+      format.json { head :no_content }
+    end
+  end
+
+  def validate_newcomer
+    newcomer_id = params[:newcomer_id]
+    newcomer = Newcomer.find(newcomer_id)
+    newcomer.team_id = newcomer.id%Team.count
+    newcomer.is_valid = true
+    newcomer.save
+
+    respond_to do |format|
+      format.html { redirect_to newcomers_url, notice: 'Bixe foi validado com sucesso.' }
       format.json { head :no_content }
     end
   end

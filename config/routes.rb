@@ -7,6 +7,7 @@ Rails.application.routes.draw do
   get 'newcomer_sports_index',to: "sport_interests_newcomer#newcomer_sports_index"
 
   put 'mark_sport', to: 'sport_interests_newcomer#create_array', as: :mark_sports 
+  put 'validate_newcomer', to: 'newcomers#validate_newcomer', as: :validate_newcomer 
   put 'attribute_score', to: 'tasks#score_each_team', as: :attribute_score 
 
   resources :tasks do
