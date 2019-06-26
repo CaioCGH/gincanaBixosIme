@@ -82,13 +82,47 @@ end
 puts 'Seeding sports!'
 # Esportes
 if Sport.last == nil
-    Sport.create(name: "Basquete")
-    Sport.create(name: "Mahjong")
-    Sport.create(name: "Vôlei")
-    Sport.create(name: "Ultimate")
+
+    modalidades = [
+    "Algorítmo (bateria)",
+    "Atletismo",
+    "Basquete feminino",
+    "Basquete masculino",
+    "Beisebol/Softbol",
+    "Bridge",
+    "E-Sports",
+    "Futebol de campo",
+    "Futsal feminino",
+    "Futsal masculino",
+    "Handebol feminino",
+    "Handebol masculino",
+    "Jiu Jitsu",
+    "Natação",
+    "Rugby feminino",
+    "Rugby masculino",
+    "Saltos Ornamentais",
+    "Tênis de Campo",
+    "Tênis de mesa",
+    "Ultimate Frisbee",
+    "Vôlei feminino",
+    "Vôlei masculino",
+    "Xadrez"]
+
+    for modalidade in modalidades do
+        Sport.create(name: "#{modalidade}")
+    end
+
     SportInterestsNewcomer.create(newcomer_id: 2, sport_id: 1)
     SportInterestsNewcomer.create(newcomer_id: 2, sport_id: 2)
     SportInterestsNewcomer.create(newcomer_id: 2, sport_id: 3)
+    SportInterestsNewcomer.create(newcomer_id: 3, sport_id: 3)
+    SportInterestsNewcomer.create(newcomer_id: 3, sport_id: 4)
+    SportInterestsNewcomer.create(newcomer_id: 3, sport_id: 5)
+    SportInterestsNewcomer.create(newcomer_id: 3, sport_id: 6)
+    SportInterestsNewcomer.create(newcomer_id: 4, sport_id: 1)
+    SportInterestsNewcomer.create(newcomer_id: 4, sport_id: 3)
+    SportInterestsNewcomer.create(newcomer_id: 4, sport_id: 6)
+    SportInterestsNewcomer.create(newcomer_id: 4, sport_id: 7)
 end
 if NewcomerSendsTask.last == nil
     ust = NewcomerSendsTask.new(newcomer_id: 2, task_id: 3, index: 1)

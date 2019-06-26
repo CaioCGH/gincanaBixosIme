@@ -10,13 +10,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_06_21_200811) do
+ActiveRecord::Schema.define(version: 2019_05_18_184443) do
+
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
 
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
     t.string "record_type", null: false
-    t.integer "record_id", null: false
-    t.integer "blob_id", null: false
+    t.bigint "record_id", null: false
+    t.bigint "blob_id", null: false
     t.datetime "created_at", null: false
     t.index ["blob_id"], name: "index_active_storage_attachments_on_blob_id"
     t.index ["record_type", "record_id", "name", "blob_id"], name: "index_active_storage_attachments_uniqueness", unique: true
@@ -41,8 +44,8 @@ ActiveRecord::Schema.define(version: 2019_06_21_200811) do
   end
 
   create_table "newcomer_sends_tasks", force: :cascade do |t|
-    t.integer "task_id"
-    t.integer "newcomer_id"
+    t.bigint "task_id"
+    t.bigint "newcomer_id"
     t.integer "index"
     t.boolean "is_valid"
     t.string "feedback"
@@ -59,9 +62,9 @@ ActiveRecord::Schema.define(version: 2019_06_21_200811) do
     t.string "telephone"
     t.boolean "tutor"
     t.boolean "is_valid"
-    t.integer "course_id"
-    t.integer "user_id"
-    t.integer "team_id"
+    t.bigint "course_id"
+    t.bigint "user_id"
+    t.bigint "team_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["course_id"], name: "index_newcomers_on_course_id"
@@ -70,8 +73,8 @@ ActiveRecord::Schema.define(version: 2019_06_21_200811) do
   end
 
   create_table "sport_interests_newcomers", force: :cascade do |t|
-    t.integer "newcomer_id"
-    t.integer "sport_id"
+    t.bigint "newcomer_id"
+    t.bigint "sport_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["newcomer_id", "sport_id"], name: "index_sport_interests_newcomers_on_newcomer_id_and_sport_id", unique: true
@@ -118,4 +121,12 @@ ActiveRecord::Schema.define(version: 2019_06_21_200811) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "newcomer_sends_tasks", "newcomers"
+  add_foreign_key "newcomer_sends_tasks", "tasks"
+  add_foreign_key "newcomers", "courses"
+  add_foreign_key "newcomers", "teams"
+  add_foreign_key "newcomers", "users"
+  add_foreign_key "sport_interests_newcomers", "newcomers"
+  add_foreign_key "sport_interests_newcomers", "sports"
 end
