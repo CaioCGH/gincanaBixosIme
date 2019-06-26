@@ -7,7 +7,7 @@ module NewcomerHelper
         @course = Course.find(newcomer.course_id)
     end
     def getTeam(newcomer)
-        if newcomer != nil
+        if newcomer.team_id != nil
             return @team = Team.find(newcomer.team_id)
         else
             return nil
