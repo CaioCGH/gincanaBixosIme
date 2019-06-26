@@ -12,7 +12,8 @@ RSpec.describe "Em Envios" do
             nst.save
             expect(NewcomerSendsTask.find(nst.id).task_id).to eq(task.id)
         end
-        it "e falhar pois não tem um esporte vinculado"
+
+        it "e falhar pois não tem um esporte vinculado" do
             user = User.create(email: "william.shattner@usp.br", password: "bixe123", admin: false)
             course = Course.create(name: "Bacharelado em Estatística", alias: "Estat")
             newcomer = Newcomer.create(name: "William Shattner", telephone: "987654321", course_id: course.id, team_id: nil, user_id: user.id, tutor: true, is_valid: false)
@@ -22,7 +23,8 @@ RSpec.describe "Em Envios" do
             nst.save
             expect(NewcomerSendsTask.count).to eq(qnt)
         end
-        it "e falhar pois o índice é negativo"
+
+        it "e falhar pois o índice é negativo" do
             user = User.create(email: "william.shattner@usp.br", password: "bixe123", admin: false)
             course = Course.create(name: "Bacharelado em Estatística", alias: "Estat")
             newcomer = Newcomer.create(name: "William Shattner", telephone: "987654321", course_id: course.id, team_id: nil, user_id: user.id, tutor: true, is_valid: false)
@@ -33,6 +35,7 @@ RSpec.describe "Em Envios" do
             expect(NewcomerSendsTask.count).to eq(qnt)
         end
     end
+
     context "tentar deletar" do
         it "um Envio e conseguir" do
             user = User.create(email: "william.shattner@usp.br", password: "bixe123", admin: false)
@@ -46,6 +49,7 @@ RSpec.describe "Em Envios" do
             NewcomerSendsTask.destroy(nst.id)
             expect(NewcomerSendsTask.count).to eq(qnt - 1)
         end
+
         it "uma prova ligada a um envio e conseguir" do
             user = User.create(email: "caio.hirakawa@usp.br", password: "bixe123", admin: false)
             course = Course.create(name: "Bacharelado em Matemática", alias: "Pura")
@@ -57,6 +61,7 @@ RSpec.describe "Em Envios" do
             Task.destroy(task.id)
             expect(NewcomerSendsTask.count).to eq(qnt - 1)
         end
+
         it "um bixe ligado a um envio e conseguir" do
             user = User.create(email: "victor.batistella@usp.br", password: "bixe123", admin: false)
             course = Course.create(name: "Licenciatura em Matemática", alias: "Lic")

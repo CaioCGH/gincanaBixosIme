@@ -10,7 +10,9 @@ RSpec.describe "Em Interresse por esportes" do
             sin = SportInterestsNewcomer.create(newcomer_id: newcomer.id, sport_id: sport.id)
             expect(SportInterestsNewcomer.find(sin.id).sport_id).to eq(sport.id)
         end
-        it "e falhar pois não tem um esporte vinculado"
+    end
+    context "tentar criar novo Interresse" do
+        it "e falhar pois não tem um esporte vinculado" do
             user = User.create(email: "william.shattner@usp.br", password: "bixe123", admin: false)
             course = Course.create(name: "Bacharelado em Estatística", alias: "Estat")
             newcomer = Newcomer.create(name: "William Shattner", telephone: "987654321", course_id: course.id, team_id: nil, user_id: user.id, tutor: true, is_valid: false)

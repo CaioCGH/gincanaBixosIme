@@ -11,23 +11,29 @@ RSpec.describe "Em Time" do
             Team.create(name: "Azul", score: -1)
             expect(Team.count).to eq(qnt)
         end
-        it "e falhar pois não tem nome"
+        it "e falhar pois não tem nome" do
             qnt = Team.count
             Team.create(name: nil, score: 0)
             expect(Team.count).to eq(qnt)
         end
     end
+end
+
+RSpec.describe "Em Time" do
     context "tentar somar 100 pontos na pontuação" do
     	it "e conseguir" do
     		team = Team.create(name: "Azul", score: 0)
-    		team.update(score: tem.score + 100)
+    		team.update(score: team.score + 100)
     		expect(team.score).to eq(100)
     	end
     end
+end
+
+RSpec.describe "Em Time" do
     context "tentar deletar" do
     	it "e conseguir" do
     		team = Team.create(name: "Verde", score: 0)
-    		qnt = team.count
+    		qnt = Team.count
     		Team.destroy(team.id)
     		expect(Team.count).to eq(qnt - 1)
     	end

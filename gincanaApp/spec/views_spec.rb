@@ -41,5 +41,4 @@ RSpec.describe "Em sign up" do
 #            expect(page).to have_content 'Seja bem vinde'
 #        end
 #    end
-#end
-
+end
