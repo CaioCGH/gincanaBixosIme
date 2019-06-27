@@ -7,9 +7,8 @@
         <th>Nome</th>
         <th>Telefone</th>
         <th>Curso</th>
-        <th>Tutor?</th>
-        <th>Validado?</th>
-        <th colspan="6"></th>
+        <th>Deseja tutor?</th>
+        <th colspan="4"></th>
       </tr>
     </thead>
 
@@ -19,8 +18,7 @@
           <td><%= nc.name %></td>
           <td><%= nc.telephone %></td>
           <td><%= getCourse(nc).alias %></td>
-          <td><%= nc.tutor %></td>
-          <td><%= nc.is_valid %></td>
+          <td><%= desireTutor(nc) %></td>
           <td><%= link_to 'Detalhes', nc %></td>
           <td><%= link_to 'Editar', edit_newcomer_path(nc) %></td>
           <td><%= link_to 'Excluir', nc, method: :delete, data: { confirm: 'Tem certeza?' } %></td>
@@ -44,10 +42,9 @@
         <th>Nome</th>
         <th>Telefone</th>
         <th>Curso</th>
-        <th>Tutor?</th>
-        <th>Validado?</th>
+        <th>Deseja tutor?</th>
         <th>Time</th>
-        <th colspan="6"></th>
+        <th colspan="5"></th>
       </tr>
     </thead>
 
@@ -57,8 +54,7 @@
           <td><%= nc.name %></td>
           <td><%= nc.telephone %></td>
           <td><%= getCourse(nc).alias %></td>
-          <td><%= nc.tutor %></td>
-          <td><%= nc.is_valid %></td>
+          <td><%= desireTutor(nc) %></td>
           <td><%= getTeam(nc).name %></td>
           <td><%= link_to 'Detalhes', nc %></td>
           <td><%= link_to 'Editar', edit_newcomer_path(nc) %></td>

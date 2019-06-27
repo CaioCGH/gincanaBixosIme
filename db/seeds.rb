@@ -22,25 +22,26 @@ puts 'Seeding Task!'
 if Task.last == nil
     task1 = Task.create(
         name: "Palestras",
-        description: "Presença em palestras vale 50 pontos",
-        score_type: "Cada Palestra 50 pontos" ,
+        description: "Assistir as palestras da semana de recepção.",
+        score_type: "Cada palestra assistida vale 1 ponto por bixe!" ,
         have_score: false ,
         group: false ,
         sendable: false,
-        max_send: 10,
+        max_send: nil,
         have_feedback: true)
     task2 = Task.create(
         name: "Fantasia",
-        description: "Virá fantasiado todos os dias",
-        score_type: "Cada fantasia somar pontos" ,
-        have_score: true ,
+        description: "Vir e permancecer fantasiado para as atividades da semana de recepção.",
+        score_type: "Cada dia que o bixo vier fantasiado, a equipe ganhará 50 pontos!" ,
+        have_score: true,
         group: false,
         sendable: false,
-        max_send: 4,
+        max_send: nil,
         have_feedback: false)
     task3 = Task.create(name: "Fotos da USP",
-        description: "Mande fotos de vários lugares da USP!",
-        score_type: "Cada foto validada soma 50 pontos",have_score: true,
+        description: "Mande fotos de vários lugares da USP, conforme as indicações dadas pela comissão. Não se esqueça de identificar cada foto corretamente com seu índice!",
+        score_type: "Cada foto validada soma 50 pontos à equipe.",
+        have_score: true,
         group: false,
         sendable: true,
         max_send: 50,
@@ -64,7 +65,12 @@ if User.last == nil
     User.create(email: "karl.marx@usp.br", password: "bixe123", admin: false)
     User.create(email: "angelina.jolie@usp.br", password: "bixe123", admin: false)
     User.create(email: "50.cent@usp.br", password: "bixe123", admin: false)
-    User.create(email: "roald.dahl@usp.br", password: "bixe123", admin: false)
+    User.create(email: "jennifer.lopez@usp.br", password: "bixe123", admin: false)
+    User.create(email: "anne.frank@usp.br", password: "bixe123", admin: false)
+    User.create(email: "emma.watson@usp.br", password: "bixe123", admin: false)
+    User.create(email: "james.patterson@usp.br", password: "bixe123", admin: false)
+    User.create(email: "kristen.bell@usp.br", password: "bixe123", admin: false)
+    User.create(email: "leonardo.da.vinci@usp.br", password: "bixe123", admin: false)
 end
 
 puts 'Seeding newcomers!'
@@ -76,8 +82,13 @@ if Newcomer.last == nil
     Newcomer.create(name: "William Shakespeare", telephone: "951656515", course_id: 2, team_id: 2, user_id: 3, tutor: true, is_valid: true)
     Newcomer.create(name: "Karl Marx",           telephone: "961649495", course_id: 3, team_id: 3, user_id: 4, tutor: true, is_valid: true)
     Newcomer.create(name: "Angelina Jolie",      telephone: "965115615", course_id: 4, team_id: nil, user_id: 5, tutor: false, is_valid: false)
-    Newcomer.create(name: "50 Cent",             telephone: "912312312", course_id: 5, team_id: nil, user_id: 6, tutor: false, is_valid: false)
-    Newcomer.create(name: "Roald Dahl",          telephone: "945956231", course_id: 6, team_id: nil, user_id: 7, tutor: false, is_valid: false)
+    Newcomer.create(name: "50 Cent",             telephone: "912312312", course_id: 5, team_id: nil, user_id: 6, tutor: true, is_valid: false)
+    Newcomer.create(name: "Jennifer Lopez",      telephone: "945956231", course_id: 6, team_id: nil, user_id: 7, tutor: false, is_valid: false)
+    Newcomer.create(name: "Anne Frank",          telephone: "389170076", course_id: 6, team_id: nil, user_id: 8, tutor: true, is_valid: false)
+    Newcomer.create(name: "Emma Watson",         telephone: "363441464", course_id: 5, team_id: nil, user_id: 9, tutor: false, is_valid: false)
+    Newcomer.create(name: "James Patterson",     telephone: "534692161", course_id: 5, team_id: nil, user_id: 10, tutor: false, is_valid: false)
+    Newcomer.create(name: "Kristen Bell",        telephone: "375787529", course_id: 3, team_id: nil, user_id: 11, tutor: false, is_valid: false)
+    Newcomer.create(name: "Leonardo da Vinci",   telephone: "936915871", course_id: 2, team_id: nil, user_id: 12, tutor: true, is_valid: false)
 end
 puts 'Seeding sports!'
 # Esportes
@@ -97,6 +108,7 @@ if Sport.last == nil
     "Handebol feminino",
     "Handebol masculino",
     "Jiu Jitsu",
+    "Mahjong",
     "Natação",
     "Rugby feminino",
     "Rugby masculino",
@@ -112,17 +124,19 @@ if Sport.last == nil
         Sport.create(name: "#{modalidade}")
     end
 
-    SportInterestsNewcomer.create(newcomer_id: 2, sport_id: 1)
-    SportInterestsNewcomer.create(newcomer_id: 2, sport_id: 2)
-    SportInterestsNewcomer.create(newcomer_id: 2, sport_id: 3)
-    SportInterestsNewcomer.create(newcomer_id: 3, sport_id: 3)
-    SportInterestsNewcomer.create(newcomer_id: 3, sport_id: 4)
-    SportInterestsNewcomer.create(newcomer_id: 3, sport_id: 5)
-    SportInterestsNewcomer.create(newcomer_id: 3, sport_id: 6)
-    SportInterestsNewcomer.create(newcomer_id: 4, sport_id: 1)
-    SportInterestsNewcomer.create(newcomer_id: 4, sport_id: 3)
-    SportInterestsNewcomer.create(newcomer_id: 4, sport_id: 6)
-    SportInterestsNewcomer.create(newcomer_id: 4, sport_id: 7)
+    modalidades = Sport.all
+
+    for modalidade in modalidades do
+        if modalidade.id%2 == 0
+            SportInterestsNewcomer.create(newcomer_id: 2, sport_id: modalidade.id)
+        end
+        if modalidade.id%3 == 0
+            SportInterestsNewcomer.create(newcomer_id: 3, sport_id: modalidade.id)
+        end
+        if modalidade.id%3 == 0
+            SportInterestsNewcomer.create(newcomer_id: 4, sport_id: modalidade.id)
+        end
+    end
 end
 if NewcomerSendsTask.last == nil
     ust = NewcomerSendsTask.new(newcomer_id: 2, task_id: 3, index: 1)

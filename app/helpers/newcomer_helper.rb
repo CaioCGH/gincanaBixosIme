@@ -13,4 +13,11 @@ module NewcomerHelper
             return nil
         end
     end
+    def desireTutor(newcomer)
+        if newcomer.tutor
+            return "sim"
+        else
+            return "não"
+        end
+    end
 end

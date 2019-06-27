@@ -13,47 +13,47 @@
     <% end %>
 
     <div class="field">
-      <%= form.label :name %>
+      <%= form.label "Nome" %>
       <%= form.text_field :name %>
     </div>
 
     <div class="field">
-      <%= form.label :description %>
+      <%= form.label "Descrição" %>
       <%= form.text_field :description %>
     </div>
 
     <div class="field">
-      <%= form.label :score_type %>
+      <%= form.label "Tipo de pontuação" %>
       <%= form.text_field :score_type %>
     </div>
 
     <div class="field">
-      <%= form.label :have_score %>
+      <%= form.label "Tem pontuação" %>
       <%= form.check_box :have_score %>
     </div>
 
     <div class="field">
-      <%= form.label :group %>
+      <%= form.label "Grupo?" %>
       <%= form.check_box :group %>
     </div>
 
     <div class="field">
-      <%= form.label :sendable %>
+      <%= form.label "Eviável?" %>
       <%= form.check_box :sendable %>
     </div>
 
     <div class="field">
-      <%= form.label :max_send %>
+      <%= form.label "Máximo de envios" %>
       <%= form.number_field :max_send %>
     </div>
 
     <div class="field">
-      <%= form.label :have_feedback %>
+      <%= form.label "Tem feedback?" %>
       <%= form.check_box :have_feedback %>
     </div>
 
     <div class="actions">
-      <%= form.submit %>
+      <%= form.submit "Criar nova Tarefa"%>
     </div>
   <% end %>
 <% end %>
@@ -83,7 +83,7 @@
     <%= form.file_field :photo %><br>
 
     <div class="actions">
-      <%= form.submit %>
+      <%= form.submit "Enviar arquivo" %>
     </div>
   <% end %>
 <% end %>

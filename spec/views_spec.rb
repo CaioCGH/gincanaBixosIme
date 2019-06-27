@@ -21,7 +21,7 @@ RSpec.describe "Em sign up" do
            fill_in 'user_email', :with => 'caina@usp.br'
            fill_in 'user_password', :with => 'caina123'
            fill_in 'user_password_confirmation', :with => 'caina123'
-           click_button 'Sign up'
+           click_button 'Cadastrar'
 
            fill_in 'newcomer_name', :with => 'Cainã Setti'
            fill_in 'newcomer_telephone', :with => '938121210'
@@ -40,7 +40,7 @@ RSpec.describe "Em sign up" do
             fill_in 'Telefone', :with => '938121211'
             select 'Bacharelado em Ciência da Computação', :from => 'Curso'
             check 'Gostaria de ter um veterano tutor'
-            click_button 'Cadastrar bixe'
+            click_button 'Cadastrar dados'
             expect(page).to have_content 'Seja bem vinde'
         end
    end
