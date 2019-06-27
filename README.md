@@ -25,6 +25,12 @@ Você poderá então verificar a aplicação em
 localhost:3000
 ```
 
+A aplicação também está deplyada em:
+```
+https://gincanabixosime.herokuapp.com/
+```
+
+
 Para resetar o banco (drop, create, migrate e seed):
 ```
 ./reset.sh
